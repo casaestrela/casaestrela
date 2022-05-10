@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_reason_master_form" model="ir.ui.view">
+        <field name="name">reason.master.form</field>
+        <field name="model">reason.master</field>
+        <field name="arch" type="xml">
+            <form string="Reason Master">
+            	<sheet>
+            		<group>
+		                <group>
+		                    <field name="name" required="1"/>
+		                </group>
+		                <group>
+		                </group>
+	                </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_reason_master_tree" model="ir.ui.view">
+        <field name="name">reason.master.tree</field>
+        <field name="model">reason.master</field>
+        <field name="arch" type="xml">
+            <tree string="Reason Master">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+    
+    <record id="action_reason_master" model="ir.actions.act_window">
+        <field name="name">Reason Master</field>
+        <field name="res_model">reason.master</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <menuitem
+    	name="Discount Reason"
+        action="action_reason_master"
+        id="menu_reason_master"
+        parent="sale.menu_sale_config"
+        sequence='10'/>
+        
+</odoo>

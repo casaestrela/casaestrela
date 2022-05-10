@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="res_partner_form_view_inherit_customer_code" model="ir.ui.view">
+        <field name="name">res.partner.form.view.inherit.customer.code</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="vat" position="after">
+            	<field name="customer_rank" invisible='1'/>
+            	<field name="allow_msp" invisible='1'/><!-- attrs="{'invisible':[('customer_rank','&lt;',0)]}" -->
+            </field>
+        </field>
+    </record>
+    
+    
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record model="ir.ui.view" id="view_account_journal_form_inherit_casa">
+        <field name="name">account.journal.view.form.casa</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.view_account_journal_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group/group[2]/field[@name='country_code']" position="after">
+                    <field name="is_cheque"/>
+            </xpath>
+        </field>
+    </record>
+	
+	<record model="ir.ui.view" id="view_account_payment_search_inherit_casa">
+        <field name="name">account.payment.view.search.casa.inherit</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_internal_transfer']" position="after">
+                  <field name="cheque_date"/>
+            </xpath>
+            <filter name="reconciled" position="after">
+            		<separator/>
+            		<filter string="Cheque Date" name="groupby_cheque_date" date="cheque_date"/>
+                  <!-- <filter string="Cheque Date" name="groupby_cheque_date" domain="[]" context="{'group_by': 'cheque_date'}"/>-->
+            </filter>
+        </field>
+    </record>
+    
+</odoo>

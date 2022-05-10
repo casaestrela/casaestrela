@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <data>
+   
+        <record id="pos_config_form_inherit" model="ir.ui.view">
+            <field name="model">pos.config</field>
+            <field name="name">inherit.pos.config.form</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/h2[3]" position="before">
+                
+                    <h2>Display Product Quantity</h2>
+                    <div class="row mt16 o_settings_container" id="display_qty">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="show_qty_on_pos"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="show_qty_on_pos"/>
+                                <div class="text-muted">
+                                    Select If Display Product Quantity On Product
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="restric_product_sale"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label for="restric_product_sale"/>
+                                <div class="text-muted">
+                                    Select If Not Allow To Sale When Out Of Stock
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </xpath>
+            </field>
+        </record>
+        
+    </data>
+</odoo>
