@@ -7,7 +7,10 @@
     'author': 'Evozard',
     'website': 'www.evozard.com',
     'depends': [
-        'stock_operating_unit','operating_unit',
+        'stock_operating_unit', 'operating_unit',
+        'account_operating_unit',
+        'point_of_sale',
+        'dynamic_accounts_report'
     ],
     'data': [
             "security/security.xml",

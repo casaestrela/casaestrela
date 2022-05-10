@@ -7,7 +7,11 @@
     'website': "",    
     'category': 'sale',
     'version': '1.0',
-    'depends': ['sale_management','sale_margin','evo_msp_enhancement'
+    'depends': ['sale_management',
+                'sale_margin',
+                'evo_msp_enhancement',
+                'pos_payment_report',
+                'dynamic_accounts_report'
                 ],
 
     'data': [
