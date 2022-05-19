@@ -6,7 +6,7 @@
     'description': """
         Module will allow multiple invoice payment from payment and invoice screen.
     """,
-    'summary': 'Module will allow multiple invoice payment from payment and invoice screen.',
+    'summary': "Module will allow multiple invoice payment from payment and invoice screen.",
     "category": 'Accounting Tools',
     'author': 'Evozard',
     'website': 'http://www.evozard.com',
