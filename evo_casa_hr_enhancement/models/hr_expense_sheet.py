@@ -11,7 +11,8 @@ class HRExpenseSheet(models.Model):
     
     bank_journal_id = fields.Many2one('account.journal', string='Payment Journal', states={'done': [('readonly', True)], 'post': [('readonly', True)]}, check_company=True, domain="[('type', 'in', ['cash', 'bank']), ('company_id', '=', company_id)]",
         default=_default_bank_journal_id, help="The payment method used when the expense is paid by the company.")
-    
+
+
 class HrExpense(models.Model):
     _inherit = "hr.expense"
     

@@ -5,6 +5,7 @@ from odoo.exceptions import UserError
 
 class FundTransferMaster(models.Model):
     _name = "fund.transfer.master"
+    _description = "Fund Transfer Master"
     _rec_name = "name"
 
     def default_get_from_account_id(self):
@@ -41,15 +42,14 @@ class FundTransferMaster(models.Model):
         mis_journal_id = self.env['account.journal'].search([('type','=', 'general')], limit=1)
         return mis_journal_id.id
 
-
     name = fields.Char('Name',copy=False,)
     journal_id = fields.Many2one('account.journal', string='Journal',copy=False, states={'draft': [('readonly', False)]}, check_company=True, default=_get_default_jouranl)
     company_id = fields.Many2one('res.company', store=True, readonly=True, default=lambda self: self.env.company)
     move_id = fields.Many2one('account.move', string='Journal Entry',copy=False, ondelete='cascade', check_company=True)
     operating_unit_id = fields.Many2one('operating.unit', string="From Operating Unit", default=lambda self: (self.env["res.users"].operating_unit_default_get(self.env.uid)))
     to_operating_unit_id = fields.Many2one('operating.unit', string="To Operating Unit")
-    from_account_id = fields.Many2one('account.account', srting='From Account', copy=False, default=default_get_from_account_id)
-    to_account_id = fields.Many2one('account.account', srting='To Account', copy=False, domain=get_bank_cash_account_ids)
+    from_account_id = fields.Many2one('account.account', string='From Account', copy=False, default=default_get_from_account_id)
+    to_account_id = fields.Many2one('account.account', string='To Account', copy=False, domain=get_bank_cash_account_ids)
     state = fields.Selection(selection=[('draft', 'Draft'), ('submitted', 'Submitted'), ('verified', 'Verified'), ('posted', 'Posted')],
                              string='Status', required=True, readonly=True, copy=False, tracking=True, default='draft')
     payment_type_selection = fields.Selection(
@@ -62,7 +62,6 @@ class FundTransferMaster(models.Model):
     is_reject_line = fields.Boolean(string='Is Reject',copy=False)
     verified_by = fields.Many2one('res.users', string='Verified by',copy=False)
     validate_by = fields.Many2one('res.users', string='Validate by',copy=False)
-
 
     def action_submitted(self):
         if self.subtotal == 0.0:
@@ -144,14 +143,18 @@ class FundTransferMaster(models.Model):
 
 class FundTransferRejectReason(models.Model):
     _name = "fund.transfer.reject.reason"
+    _description = "Fund Transfer Reject Reason"
+    _rec_name = "transfer_id"
 
     transfer_id = fields.Many2one('fund.transfer.master', string='Transfer')
     reject_date = fields.Date(string='Date')
     user_id = fields.Many2one('res.users', string='User')
     reject_reason = fields.Text(string='Reason')
 
+
 class RejectReasonWizard(models.TransientModel):
     _name = "reject.reason"
+    _description = "Fund Reject Reason"
 
     transfer_id = fields.Many2one('fund.transfer.master', string='Transfer')
     reject_reason = fields.Text(string='Reason')
