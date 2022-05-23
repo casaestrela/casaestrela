@@ -19,10 +19,17 @@ class HrExpense(models.Model):
     @api.model
     def _default_analytic_account_id(self):
         return self.env['account.analytic.account'].search([('operating_unit_ids', '=', self.env.user.default_operating_unit_id.id)], limit=1)
-   
-    analytic_account_id = fields.Many2one('account.analytic.account',default=_default_analytic_account_id, string='Analytic Account', check_company=True)
-    payment_mode = fields.Selection([
-        # ("own_account", "Employee (to reimburse)"),
-        ("company_account", "Company"),
-    ], default='company_account', tracking=True, readonly=True,states={'done': [('readonly', True)], 'approved': [('readonly', True)], 'reported': [('readonly', True)]}, string="Paid By")
+
+    @api.model
+    def _payment_mode_selection(self):
+        return [('company_account', 'Company')]
+
+    analytic_account_id = fields.Many2one('account.analytic.account',default=_default_analytic_account_id,
+                                          string='Analytic Account', check_company=True)
+    payment_mode = fields.Selection(selection = _payment_mode_selection,
+                                    default='company_account', tracking=True, readonly=True,
+                                    states={'done': [('readonly', True)],
+                                            'approved': [('readonly', True)],
+                                            'reported': [('readonly', True)]},
+                                    string="Paid By")
     product_id = fields.Many2one('product.product', string='Expense', readonly=True, tracking=True, states={'draft': [('readonly', False)], 'reported': [('readonly', False)], 'refused': [('readonly', False)]}, domain="[('can_be_expensed', '=', True), '|', ('company_id', '=', False), ('company_id', '=', company_id)]", ondelete='restrict')

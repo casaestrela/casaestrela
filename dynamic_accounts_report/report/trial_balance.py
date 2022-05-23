@@ -3,6 +3,7 @@ from odoo import api, models, _
 
 class TrialBalance(models.AbstractModel):
     _name = 'report.dynamic_accounts_report.trial_balance'
+    _description = 'Report Trial Balance'
 
     @api.model
     def _get_report_values(self, docids, data=None):

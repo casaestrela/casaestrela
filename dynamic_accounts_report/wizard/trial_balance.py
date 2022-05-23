@@ -14,6 +14,7 @@ except ImportError:
 class TrialView(models.TransientModel):
     _inherit = "account.common.report"
     _name = 'account.trial.balance'
+    _description = 'Account Trial Balance'
 
     journal_ids = fields.Many2many('account.journal',
 

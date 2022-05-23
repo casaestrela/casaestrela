@@ -14,6 +14,7 @@ except ImportError:
 class PartnerView(models.TransientModel):
     _inherit = "account.common.report"
     _name = 'account.partner.ledger'
+    _description = 'Account Partner Ledger'
 
     journal_ids = fields.Many2many('account.journal',
                                    string='Journals', required=True,

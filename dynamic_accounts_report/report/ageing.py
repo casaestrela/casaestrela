@@ -3,6 +3,7 @@ from odoo import api, models, _
 
 class PartnerAgeing(models.AbstractModel):
     _name = 'report.dynamic_accounts_report.partner_ageing'
+    _description = 'Report Partner Ageing'
 
     @api.model
     def _get_report_values(self, docids, data=None):

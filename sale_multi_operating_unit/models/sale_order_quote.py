@@ -8,6 +8,7 @@ from odoo.exceptions import UserError
 class SaleOrderQuote(models.Model):
     _name = 'sale.order.quote'
     _description = 'Internal Quote'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Name')
     operating_unit_id = fields.Many2one(
@@ -30,7 +31,7 @@ class SaleOrderQuote(models.Model):
         ('new', 'New'),
         ('sent', 'Sent'),
         ('received', 'Received')], string='State',
-        copy=False, default='new', track_visibility='onchange')
+        copy=False, default='new', tracking=True)
 
     _sql_constraints = [
         ('sale_order_quote_operating_unit_uniq',

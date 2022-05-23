@@ -14,6 +14,7 @@ except ImportError:
 
 class AgeingView(models.TransientModel):
     _name = 'account.day.book'
+    _description = 'Account Day Book'
 
     company_id = fields.Many2one('res.company', string='Company',
                                  readonly=True,

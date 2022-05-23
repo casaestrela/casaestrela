@@ -24,7 +24,7 @@ class ResUsers(models.Model):
     #             [(4, res.default_operating_unit_id.id)]
     #     return res
 
-    @api.constrains('partner_id.operating_unit_ids',
+    @api.constrains('partner_id',
                     'default_operating_unit_id')
     def check_partner_operating_unit(self):
         if self.partner_id.operating_unit_ids and \

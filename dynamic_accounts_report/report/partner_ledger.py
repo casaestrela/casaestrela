@@ -3,6 +3,7 @@ from odoo import api, models, _
 
 class PartnerLedgerReport(models.AbstractModel):
     _name = 'report.dynamic_accounts_report.partner_ledger'
+    _description = 'Report Partner Ledger'
 
     @api.model
     def _get_report_values(self, docids, data=None):

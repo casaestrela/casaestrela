@@ -5,6 +5,7 @@ from odoo.exceptions import UserError
 
 class FundTransferMaster(models.Model):
     _name = "fund.transfer.master"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "Fund Transfer Master"
     _rec_name = "name"
 
@@ -51,7 +52,7 @@ class FundTransferMaster(models.Model):
     from_account_id = fields.Many2one('account.account', string='From Account', copy=False, default=default_get_from_account_id)
     to_account_id = fields.Many2one('account.account', string='To Account', copy=False, domain=get_bank_cash_account_ids)
     state = fields.Selection(selection=[('draft', 'Draft'), ('submitted', 'Submitted'), ('verified', 'Verified'), ('posted', 'Posted')],
-                             string='Status', required=True, readonly=True, copy=False, tracking=True, default='draft')
+                             string='Status', required=True, readonly=True, copy=False, default='draft', tracking=True)
     payment_type_selection = fields.Selection(
         selection=[('cash', 'Cash'), ('dd_cheque', 'Cheque/DD'), ('bank', 'Bank')], string='Payment Option')
     dd_cheque_no = fields.Char(string='DD/Cheque no.',copy=False)

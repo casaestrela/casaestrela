@@ -15,6 +15,7 @@ year = datetime.now().year
 class AccountCasgFlow(models.TransientModel):
     _name = "account.cash.flow"
     _inherit = "account.common.report"
+    _description = "Account Cash Flow"
 
     date_from = fields.Date(string="Start Date", default=str(year)+'-01-01')
     date_to = fields.Date(string="End Date", default=fields.Date.today)

@@ -13,6 +13,7 @@ except ImportError:
 class GeneralView(models.TransientModel):
     _inherit = "account.common.report"
     _name = 'account.general.ledger'
+    _description = 'Account General Ledger'
 
     journal_ids = fields.Many2many('account.journal',
 

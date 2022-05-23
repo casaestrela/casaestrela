@@ -17,6 +17,7 @@ except ImportError:
 class AgeingView(models.TransientModel):
     _inherit = "account.common.report"
     _name = 'account.partner.ageing'
+    _description = 'Account Partner Ageing'
 
     period_length = fields.Integer(string='Period Length (days)',
                                    required=True, default=30)

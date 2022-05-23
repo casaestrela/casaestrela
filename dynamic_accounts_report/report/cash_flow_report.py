@@ -3,6 +3,7 @@ from odoo import api, models, _
 
 class GeneralLedger(models.AbstractModel):
     _name = 'report.dynamic_accounts_report.cash_flow'
+    _description = 'Report Cash Flow'
 
     @api.model
     def _get_report_values(self, docids, data=None):
