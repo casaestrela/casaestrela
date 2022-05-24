@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+		
+		<record id="inherit_view_operating_unit_form" model="ir.ui.view">
+            <field name="name">inherit.operating.unit.form</field>
+            <field name="model">operating.unit</field>
+            <field name="inherit_id" ref="operating_unit.view_operating_unit_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                	<field name="vendor_next_seq_number"/>
+                	<field name="next_seq_number"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="inherit_view_operating_unit_tree" model="ir.ui.view">
+            <field name="name">inherit.operating.unit.tree</field>
+            <field name="model">operating.unit</field>
+            <field name="inherit_id" ref="operating_unit.view_operating_unit_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='company_id']" position="before">
+                   <field name="vendor_next_seq_number"/>
+                   <field name="next_seq_number"/>
+                </xpath>
+            </field>
+        </record>
+		
+    </data>
+</odoo> 

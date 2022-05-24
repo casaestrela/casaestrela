@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_inventory_form_inherit_casa" model="ir.ui.view">
+        <field name="name">stock.inventory.form.inherit.casa</field>
+        <field name="model">stock.inventory</field>
+        <field name="inherit_id" ref="stock.view_inventory_form"/>
+        <field name="arch" type="xml">
+        	<xpath expr="//button[3]" position="replace">
+        		<button name="action_validate" string="Validate Inventory" type="object" attrs="{'invisible': ['|', ('state', '!=', 'confirm'), ('line_ids', '!=', [])]}" groups="evo_casa_enhancement.group_inventory_adjustment"/>
+        	</xpath>
+        	<xpath expr="//button[4]" position="replace">
+        		<button name="action_validate" string="Validate Inventory" type="object" attrs="{'invisible': ['|', ('state', '!=', 'confirm'), ('line_ids', '=', [])]}" class="oe_highlight" groups="evo_casa_enhancement.group_inventory_adjustment"/>
+        	</xpath>
+		</field>
+	</record>
+	
+	<menuitem 
+		id="stock_user_report_menu" 
+		name="Report" 
+		sequence="98" 
+		parent="stock.menu_stock_root"/>
+		
+	<menuitem 
+		id="stock.menu_valuation" 
+		name="Inventory Report"              
+        parent="evo_casa_enhancement.stock_user_report_menu" 
+        sequence="5"
+        action="stock.action_view_quants"/>
+		
+	<menuitem 
+		id="evo_inventory_report.inventory_report_menu"   
+    	name="Inventory Ledger"  
+    	action="evo_inventory_report.action_inventory_valuation_report_wizard"
+		sequence="10" 
+		parent="evo_casa_enhancement.stock_user_report_menu"/>
+		
+	<menuitem id="evo_sale_inventory_report.menu_sales_inventory"
+    		name="Sales Analysis"
+    		parent="evo_casa_enhancement.stock_user_report_menu"
+    		sequence="15"
+    		action="evo_sale_inventory_report.action_sale_line_inventory_report"/>
+    		
+    
+		
+	
+	<menuitem 
+		id="main_menu_reports" 
+		name="Reports" 
+		parent="account.menu_finance" 
+		sequence='18'/>
+		
+	<menuitem 
+		id="pos_payment_report.menu_pos_payment_report" 
+		name="Payment Report" 
+		parent="evo_casa_enhancement.main_menu_reports" 
+		action="pos_payment_report.pos_payment_report_wizard_view_action" 
+		sequence="5"/>
+	
+		
+	<menuitem 
+		id="evo_msp_enhancement.msp_report_menu" 
+		name="Resumo Report" 
+		action="evo_msp_enhancement.action_msp_report_wizard" 
+		parent="evo_casa_enhancement.main_menu_reports" 
+		sequence="10"/>
+		
+	<menuitem 
+		id="dynamic_accounts_report.menu_partner_ledger" 
+		name="Partner Ledger" 
+		action="dynamic_accounts_report.action_partner_ledger" 
+		parent="evo_casa_enhancement.main_menu_reports" 
+		sequence="15"/>
+		
+	<menuitem 
+		id="dynamic_accounts_report.menu_report_daybook"  
+		action="dynamic_accounts_report.action_day_book"
+        name="Day Book" 
+        sequence="20" 
+        parent="evo_casa_enhancement.main_menu_reports"/>
+        
+    <menuitem 
+    	id="dynamic_accounts_report.menu_cash_book"  
+    	action="dynamic_accounts_report.action_cash_book"
+        name="Cash Book" 
+        sequence="25" 
+        parent="evo_casa_enhancement.main_menu_reports"/>
+        
+    <menuitem 
+    	id="dynamic_accounts_report.menu_report_ageing"  
+    	action="dynamic_accounts_report.action_ageing_partner"
+        name="Partner Ageing"
+        sequence="30" 
+        parent="evo_casa_enhancement.main_menu_reports"/>
+		
+</odoo>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="sale_order_form_view_inherit_casa" model="ir.ui.view">
+        <field name="name">sale.order.form.view.inherit.casa</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+        	<xpath expr="//field[@name='order_line']/tree/field[@name='price_subtotal']" position="before">
+        		 <field name="discount_amount"/>
+        		 <field name="discount_reason"  attrs="{'required': [('discount_amount', '&gt;', 0)]}"/>
+        	</xpath>
+		</field>
+	</record>
+	
+	<record model="ir.ui.view" id="sale_margin.sale_margin_sale_order">
+        <field name="name">sale.order.margin.view.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount_total']" position="after">
+                <label for="margin" groups="base.group_system"/>
+                <div class="text-nowrap" groups="base.group_system">
+                    <field name="margin" class="oe_inline"/>
+                    <span class="oe_inline" attrs="{'invisible': [('amount_untaxed', '=', 0)]}">
+                        (<field name="margin_percent" nolabel="1" class="oe_inline" widget="percentage"/>)
+                    </span>
+                </div>
+            </xpath>
+        </field>
+    </record>
+	
+	<record id="view_stock_quant_tree_inherit_casa" model="ir.ui.view">
+        <field name="name">stock.quant.form.view.inherit.casa</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.view_stock_quant_tree"/>
+        <field name="arch" type="xml">
+        	<xpath expr="//field[@name='value']" position="replace">
+        		 <field name="value" groups="account.group_account_user"/>
+        	</xpath>
+		</field>
+	</record>
+	
+	<record id="view_stock_quant_tree_editable_inherit_casa" model="ir.ui.view">
+        <field name="name">stock.quant.form.view.inherit.casa</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.view_stock_quant_tree_editable"/>
+        <field name="arch" type="xml">
+        	<xpath expr="//field[@name='value']" position="replace">
+        		 <field name="value" groups="account.group_account_user"/>
+        	</xpath>
+		</field>
+	</record>
+	
+	<record id="view_sale_order_line_tree_casa" model="ir.ui.view">
+        <field name="name">sale.order.line.tree.view.casa</field>
+        <field name="model">sale.order.line</field>
+        <field name="arch" type="xml">
+			<tree create="false">
+				<field name="order_id" invisible='1'/>
+				<field name="invoice_id" />	
+				<field name="product_id" />	
+				<field name="product_uom_qty" />
+				<field name="price_unit" />	
+				<field name="discount" invisible='1'/>			
+				<field name="discount_amount" />
+				<field name="discount_reason" />			
+				<field name="price_total" />
+			</tree>
+		</field>
+	</record>
+	
+	<record id="view_sale_order_line_search" model="ir.ui.view">
+        <field name="name">sale.order.line.discount.search</field>
+        <field name="model">sale.order.line</field>
+        <field name="arch" type="xml">
+            <search string="Search Discount Reason">
+            	<field name="product_id" string="Product" />
+                <field name="discount_reason" string="Discount Reason" />
+                <group expand="0" string="Group By">
+                        <filter string="Reason" name="discount_reason" domain="[]" context="{'group_by':'discount_reason'}"/>
+                        <filter string="Product" name="product_id" domain="[]" context="{'group_by':'product_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+	
+	<record id="action_sale_order_line" model="ir.actions.act_window">
+         <field name="name">Discount Report</field>
+         <field name="type">ir.actions.act_window</field>
+         <field name="res_model">sale.order.line</field>
+         <field name="domain">[('discount','&gt;',0.0)]</field>
+         <field name="view_id" ref="view_sale_order_line_tree_casa"/>
+         <field name="search_view_id" ref="view_sale_order_line_search"/>
+         <field name="view_mode">tree,search</field>
+     </record>
+     
+     <menuitem
+    	name="Discount Report"
+        action="action_sale_order_line"
+        id="menu_reason_report"
+        parent="sale.menu_sale_report"
+        sequence='10'/>
+        
+        
+        <record id="sale.action_report_saleorder" model="ir.actions.report">
+            <field name="name">Quotation / Order</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sale.report_saleorder</field>
+            <field name="report_file">sale.report_saleorder</field>
+            <field name="print_report_name">(object.state in ('draft', 'sent') and 'Quotation - %s' % (object.name)) or 'Order - %s' % (object.name)</field>
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="sale.action_report_pro_forma_invoice" model="ir.actions.report">
+            <field name="name">PRO-FORMA Invoice</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sale.report_saleorder_pro_forma</field>
+            <field name="report_file">sale.report_saleorder_pro_forma</field>
+            <field name="print_report_name">'PRO-FORMA - %s' % (object.name)</field>
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+            <field name="groups_id" eval="[(4, ref('sale.group_proforma_sales'))]"/>
+        </record>
+	
+	
+	
+</odoo>
