@@ -1,22 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-	<data noupdate="0">
-		
-		<record model="ir.module.category" id="module_category_casa_security">
+    <data noupdate="0">
+        <record model="ir.module.category" id="module_category_casa_security">
             <field name="name">Extra Access</field>
             <field name="sequence">105</field>
         </record>
-        
-        
-	    <record id="group_inventory_adjustment" model="res.groups">
-	        <field name="name">Inventory Adjustment</field>
-	        <field name="category_id" ref="evo_casa_enhancement.module_category_casa_security"/>
-	    </record>
-	    
-	    <record id="group_back_date_transaction" model="res.groups">
-	        <field name="name">Back Date Transaction</field>
-	        <field name="category_id" ref="evo_casa_enhancement.module_category_casa_security"/>
-	    </record>
-	    
-	</data>
+        <record id="group_inventory_adjustment" model="res.groups">
+            <field name="name">Inventory Adjustment</field>
+            <field
+                name="category_id"
+                ref="evo_casa_enhancement.module_category_casa_security"
+            />
+        </record>
+        <record id="group_back_date_transaction" model="res.groups">
+            <field name="name">Back Date Transaction</field>
+            <field
+                name="category_id"
+                ref="evo_casa_enhancement.module_category_casa_security"
+            />
+        </record>
+    </data>
 </odoo>

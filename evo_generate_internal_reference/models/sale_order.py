@@ -1,8 +1,9 @@
-from odoo import models, api
+from odoo import api, models
+
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
-    
+
     # @api.model
     # def create(self, vals):
     #     if vals.get('operating_unit_id'):

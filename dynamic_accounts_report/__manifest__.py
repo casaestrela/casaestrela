@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #############################################################################
 #
 #    Cybrosys Technologies Pvt. Ltd.
@@ -21,47 +20,47 @@
 #############################################################################
 
 {
-    'name': 'Dynamic Financial Reports',
-    'version': '14.0.1.2.3',
-    'category': 'Accounting',
-    'live_test_url': 'https://www.youtube.com/watch?v=gVQi9q9Rs-E&t=5s',
-    'summary': """Dynamic Financial Reports with drill 
+    "name": "Dynamic Financial Reports",
+    "version": "14.0.1.2.3",
+    "category": "Accounting",
+    "live_test_url": "https://www.youtube.com/watch?v=gVQi9q9Rs-E&t=5s",
+    "summary": """Dynamic Financial Reports with drill
                 down and filters– Community Edition""",
-    'description': "Dynamic Financial Reports, DynamicFinancialReports, FinancialReport, Accountingreports, odoo reports, odoo"
-                   "This module creates dynamic Accounting General Ledger, Trial Balance, Balance Sheet "
-                   "Proft and Loss, Cash Flow Statements, Partner Ledger,"
-                   "Partner Ageing, Day book"
-                   "Bank book and Cash book reports in Odoo 14 community edition.",
-    'author': 'Cybrosys Techno Solutions',
-    'website': "https://www.cybrosys.com",
-    'company': 'Cybrosys Techno Solutions',
-    'maintainer': 'Cybrosys Techno Solutions',
-    'depends': ['base', 'base_accounting_kit'],
-    'data': [
-        'security/ir.model.access.csv',
-        'views/templates.xml',
-        'views/views.xml',
-        'views/kit_menus.xml',
-        'report/trial_balance.xml',
-        'report/general_ledger.xml',
-        'report/cash_flow_report.xml',
-        'report/financial_report_template.xml',
-        'report/partner_ledger.xml',
-        'report/ageing.xml',
-        'report/daybook.xml',
+    "description": "Dynamic Financial Reports, DynamicFinancialReports, FinancialReport, Accountingreports, odoo reports, odoo"
+    "This module creates dynamic Accounting General Ledger, Trial Balance, Balance Sheet "
+    "Proft and Loss, Cash Flow Statements, Partner Ledger,"
+    "Partner Ageing, Day book"
+    "Bank book and Cash book reports in Odoo 14 community edition.",
+    "author": "Cybrosys Techno Solutions",
+    "website": "https://www.cybrosys.com",
+    "company": "Cybrosys Techno Solutions",
+    "maintainer": "Cybrosys Techno Solutions",
+    "depends": ["base", "base_accounting_kit"],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/templates.xml",
+        "views/views.xml",
+        "views/kit_menus.xml",
+        "report/trial_balance.xml",
+        "report/general_ledger.xml",
+        "report/cash_flow_report.xml",
+        "report/financial_report_template.xml",
+        "report/partner_ledger.xml",
+        "report/ageing.xml",
+        "report/daybook.xml",
     ],
-    'qweb': [
-        'static/src/xml/general_ledger_view.xml',
-        'static/src/xml/trial_balance_view.xml',
-        'static/src/xml/cash_flow_view.xml',
-        'static/src/xml/financial_reports_view.xml',
-        'static/src/xml/partner_ledger_view.xml',
-        'static/src/xml/ageing.xml',
-        'static/src/xml/daybook.xml',
+    "qweb": [
+        "static/src/xml/general_ledger_view.xml",
+        "static/src/xml/trial_balance_view.xml",
+        "static/src/xml/cash_flow_view.xml",
+        "static/src/xml/financial_reports_view.xml",
+        "static/src/xml/partner_ledger_view.xml",
+        "static/src/xml/ageing.xml",
+        "static/src/xml/daybook.xml",
     ],
-    'license': 'LGPL-3',
-    'images': ['static/description/banner.png'],
-    'installable': True,
-    'auto_install': False,
-    'application': True,
+    "license": "LGPL-3",
+    "images": ["static/description/banner.png"],
+    "installable": True,
+    "auto_install": False,
+    "application": True,
 }

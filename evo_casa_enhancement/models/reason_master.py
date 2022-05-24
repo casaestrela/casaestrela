@@ -1,8 +1,8 @@
-from odoo import api, fields, models,exceptions,_
+from odoo import _, api, exceptions, fields, models
+
 
 class ReasonMaster(models.Model):
     _name = "reason.master"
     _description = "Reason Master"
-    
-    name = fields.Char('Name')
-    
+
+    name = fields.Char("Name")

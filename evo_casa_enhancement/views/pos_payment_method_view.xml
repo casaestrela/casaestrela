@@ -1,14 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-<record model="ir.ui.view" id="pos_payment_method_view_form_inherit_casa">
+    <record model="ir.ui.view" id="pos_payment_method_view_form_inherit_casa">
         <field name="name">pos.payment.method.view.form.casa</field>
         <field name="model">pos.payment.method</field>
-        <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_form"/>
+        <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_form" />
         <field name="arch" type="xml">
-            <xpath expr="//sheet/group/group[2]/field[@name='use_payment_terminal']" position="after">
-                    <field name="is_cheque"/>
+            <xpath
+                expr="//sheet/group/group[2]/field[@name='use_payment_terminal']"
+                position="after"
+            >
+                <field name="is_cheque" />
             </xpath>
         </field>
     </record>
-    
-    </odoo>
+</odoo>

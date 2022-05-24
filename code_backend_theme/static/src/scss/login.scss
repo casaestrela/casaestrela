@@ -5,20 +5,20 @@
     background: #fff !important;
 }
 body {
-    font-family: 'Poppins', sans-serif !important;
+    font-family: "Poppins", sans-serif !important;
 }
 body.bg-100 {
     background-color: #f8f8fb !important;
 }
 .card.o_database_list {
     align-items: center;
-    max-width: 450px !important
+    max-width: 450px !important;
 }
 .card.o_database_list .card-body {
     background-color: #fff !important;
     border-radius: 5px !important;
-    -webkit-box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03) !important;
-    box-shadow: 0 0.75rem 1.5rem rgba(18,38,63, .03) !important;
+    -webkit-box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03) !important;
+    box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03) !important;
     width: 450px;
 }
 a {
@@ -54,20 +54,22 @@ a:hover {
     background-color: #485ec4;
     border-color: #4458b8;
 }
-.btn-check:active+.btn-primary,
-.btn-check:checked+.btn-primary,
-.btn-primary.active,.btn-primary:active,
-.show>.btn-primary.dropdown-toggle {
+.btn-check:active + .btn-primary,
+.btn-check:checked + .btn-primary,
+.btn-primary.active,
+.btn-primary:active,
+.show > .btn-primary.dropdown-toggle {
     color: #fff;
     background-color: #4458b8 !important;
     border-color: #4053ad !important;
 }
-.btn-check:focus+.btn-primary, .btn-primary:focus {
+.btn-check:focus + .btn-primary,
+.btn-primary:focus {
     color: #fff;
     background-color: #485ec4 !important;
     border-color: #4458b8 !important;
-    -webkit-box-shadow: 0 0 0 .15rem rgba(111,132,234,.5) !important;
-    box-shadow: 0 0 0 .15rem rgba(111,132,234,.5) !important;
+    -webkit-box-shadow: 0 0 0 0.15rem rgba(111, 132, 234, 0.5) !important;
+    box-shadow: 0 0 0 0.15rem rgba(111, 132, 234, 0.5) !important;
 }
 .oe_login_form .btn {
     display: inline-block;
@@ -76,12 +78,17 @@ a:hover {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    padding: .47rem .75rem;
-    border-radius: .25rem;
-    -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    padding: 0.47rem 0.75rem;
+    border-radius: 0.25rem;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+        -webkit-box-shadow 0.15s ease-in-out;
 }
 .btn-secondary {
     color: #fff !important;
@@ -98,10 +105,14 @@ a:hover {
     background-color: #5d6071 !important;
     border-color: #575a6a !important;
 }
-.btn-secondary i,.btn-secondary span {
+.btn-secondary i,
+.btn-secondary span {
     color: #fff !important;
 }
-.btn-fill-secondary:focus, .btn-secondary:focus, .btn-fill-secondary.focus, .focus.btn-secondary {
+.btn-fill-secondary:focus,
+.btn-secondary:focus,
+.btn-fill-secondary.focus,
+.focus.btn-secondary {
     box-shadow: none !important;
 }
 //login button ends
@@ -122,13 +133,15 @@ a:hover {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    border-radius: .25rem;
-    -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    border-radius: 0.25rem;
+    -webkit-transition: border-color 0.15s ease-in-out,
+        -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+        -webkit-box-shadow 0.15s ease-in-out;
     box-shadow: none !important;
-    margin-bottom:10px !important;
+    margin-bottom: 10px !important;
 }
 form label {
     font-weight: 400 !important;

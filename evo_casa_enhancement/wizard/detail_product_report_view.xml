@@ -1,51 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-	<data>
-		
-	<record id="view_detail_product_report" model="ir.ui.view">
+    <data>
+        <record id="view_detail_product_report" model="ir.ui.view">
             <field name="name">detail.product.report.form</field>
             <field name="model">detail.product.report</field>
             <field name="arch" type="xml">
-				<form string="Inventory Report">
-					<sheet>
-						<group>
-							<group>
-								<field name="company_id" invisible='1'/>
-								<field name="start_date" required='1'/>		
-								<field name="user_id" invisible='1'/>
-								<field name="operating_unit" required='1'/>						
-							</group>
-							<group>
-								<field name="end_date" required='1'/>									
-								<field name="allow_operating_unit_ids" invisible='1'/>
-								<field name="product_id" required='1'/>
-							</group>
-						</group>
-						<footer>
-	                        <button string='View Report' name="action_confirm_report" type="object" class="btn-primary"/>
-	                        <button string="Cancel" class="btn-default" special="cancel"/>
-	                    </footer>
-					</sheet>
-				</form>
+                <form string="Inventory Report">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="company_id" invisible='1' />
+                                <field name="start_date" required='1' />
+                                <field name="user_id" invisible='1' />
+                                <field name="operating_unit" required='1' />
+                            </group>
+                            <group>
+                                <field name="end_date" required='1' />
+                                <field name="allow_operating_unit_ids" invisible='1' />
+                                <field name="product_id" required='1' />
+                            </group>
+                        </group>
+                        <footer>
+                            <button
+                                string='View Report'
+                                name="action_confirm_report"
+                                type="object"
+                                class="btn-primary"
+                            />
+                            <button
+                                string="Cancel"
+                                class="btn-default"
+                                special="cancel"
+                            />
+                        </footer>
+                    </sheet>
+                </form>
             </field>
-    </record>
-    
-    
-    <record id="action_detail_product_report" model="ir.actions.act_window">
-        <field name="name">Detail Product Report</field>
-        <field name="res_model">detail.product.report</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="view_mode">form</field>
-        <field name="view_id" ref="view_detail_product_report"/>
-        <field name="target">new</field>
-    </record>
-    
-   <menuitem id="menu_detail_product_report"
-    		name="Detail Product Report"
-    		parent="evo_casa_enhancement.stock_user_report_menu"
-    		sequence="20"
-    		action="evo_casa_enhancement.action_detail_product_report"/>    	
-
-   </data>
-
+        </record>
+        <record id="action_detail_product_report" model="ir.actions.act_window">
+            <field name="name">Detail Product Report</field>
+            <field name="res_model">detail.product.report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_detail_product_report" />
+            <field name="target">new</field>
+        </record>
+        <menuitem
+            id="menu_detail_product_report"
+            name="Detail Product Report"
+            parent="evo_casa_enhancement.stock_user_report_menu"
+            sequence="20"
+            action="evo_casa_enhancement.action_detail_product_report"
+        />
+    </data>
 </odoo>

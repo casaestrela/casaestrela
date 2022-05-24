@@ -1,13 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-	<record id="stock_scrap_form_view_inherit_casa" model="ir.ui.view">
+    <record id="stock_scrap_form_view_inherit_casa" model="ir.ui.view">
         <field name="name">stock.scrap.form.inherit.casa</field>
         <field name="model">stock.scrap</field>
-        <field name="inherit_id" ref="stock.stock_scrap_form_view"/>
+        <field name="inherit_id" ref="stock.stock_scrap_form_view" />
         <field name="arch" type="xml">
-        	<xpath expr="//button[@name='action_validate']" position="replace">
-        		<button name="action_validate" states="draft" string="Validate" type="object" class="oe_highlight" context="{'not_unlink_on_discard': True}" groups="evo_casa_enhancement.group_inventory_adjustment"/>
-        	</xpath>
-		</field>
-	</record>
+            <xpath expr="//button[@name='action_validate']" position="replace">
+                <button
+                    name="action_validate"
+                    states="draft"
+                    string="Validate"
+                    type="object"
+                    class="oe_highlight"
+                    context="{'not_unlink_on_discard': True}"
+                    groups="evo_casa_enhancement.group_inventory_adjustment"
+                />
+            </xpath>
+        </field>
+    </record>
 </odoo>

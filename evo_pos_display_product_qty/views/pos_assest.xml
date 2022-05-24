@@ -1,14 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
-	<template id="assets_editor" inherit_id="point_of_sale.assets">
+    <template id="assets_editor" inherit_id="point_of_sale.assets">
         <xpath expr="." position="inside">
-            <script type="text/javascript" src="/evo_pos_display_product_qty/static/src/js/model.js"/>
+            <script
+                type="text/javascript"
+                src="/evo_pos_display_product_qty/static/src/js/model.js"
+            />
             <!-- <script type="text/javascript" src="/evo_pos_display_product_qty/static/src/js/CustomCasaProductScreen.js"/>-->
-            <script type="text/javascript" src="/evo_pos_display_product_qty/static/src/js/Product_Screen.js"/>
-            <link rel="stylesheet" href="/evo_pos_display_product_qty/static/src/css/pos_css.css"/>      
+            <script
+                type="text/javascript"
+                src="/evo_pos_display_product_qty/static/src/js/Product_Screen.js"
+            />
+            <link
+                rel="stylesheet"
+                href="/evo_pos_display_product_qty/static/src/css/pos_css.css"
+            />
         </xpath>
     </template>
-    
-
 </odoo>

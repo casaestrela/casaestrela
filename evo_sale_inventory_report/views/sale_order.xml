@@ -1,47 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-	
-	<record id="view_ale_line_inventory_search" model="ir.ui.view">
+    <record id="view_ale_line_inventory_search" model="ir.ui.view">
         <field name="name">view.sale.line.inventory.search</field>
         <field name="model">sale.order.line</field>
         <field name="arch" type="xml">
             <search string="Sales Analysis">
-            	<group expand="0" string="Group By">
-					<field name="name"/>
-            		<filter string="Order" name="by_order" domain="[]"  context="{'group_by': 'order_id'}"/>
-				</group>
-			</search>
-		</field>
-	</record>
-	
-	<record id="view_sale_line_inventory_tree" model="ir.ui.view">
-         <field name="name">view.sale.line.inventory.tree</field>
-         <field name="model">sale.order.line</field>
-         <field name="arch" type="xml">
-             <tree string="Sales Analysis">
-             	<field name="invoice_names"/>
-             	<field name="delivery_order_names"/>
-             	<field name="product_default_code"/>
-				<field name="product_uom_qty"/>
-				<field name="qty_invoiced"/>
-				<field name="qty_delivered"/>
-				<field name="pending_delivery_qty"/>
-             </tree>
-         </field>
+                <group expand="0" string="Group By">
+                    <field name="name" />
+                    <filter
+                        string="Order"
+                        name="by_order"
+                        domain="[]"
+                        context="{'group_by': 'order_id'}"
+                    />
+                </group>
+            </search>
+        </field>
     </record>
-	
-	<record id="action_sale_line_inventory_report" model="ir.actions.act_window">
+    <record id="view_sale_line_inventory_tree" model="ir.ui.view">
+        <field name="name">view.sale.line.inventory.tree</field>
+        <field name="model">sale.order.line</field>
+        <field name="arch" type="xml">
+            <tree string="Sales Analysis">
+                <field name="invoice_names" />
+                <field name="delivery_order_names" />
+                <field name="product_default_code" />
+                <field name="product_uom_qty" />
+                <field name="qty_invoiced" />
+                <field name="qty_delivered" />
+                <field name="pending_delivery_qty" />
+            </tree>
+        </field>
+    </record>
+    <record id="action_sale_line_inventory_report" model="ir.actions.act_window">
         <field name="name">Sales Analysis</field>
         <field name="res_model">sale.order.line</field>
         <field name="view_mode">tree,pivot,graph</field>
-        <field name="view_id" ref="view_sale_line_inventory_tree"/>
-        <field name="search_view_id" ref="view_ale_line_inventory_search"/>
+        <field name="view_id" ref="view_sale_line_inventory_tree" />
+        <field name="search_view_id" ref="view_ale_line_inventory_search" />
         <field name="context">{'search_default_by_order': 1}</field>
     </record>
-    
-    <menuitem id="menu_sales_inventory"
-    		name="Sales Analysis"
-    		parent="stock.menu_warehouse_report"
-    		sequence="500"
-    		action="action_sale_line_inventory_report"/>
+    <menuitem
+        id="menu_sales_inventory"
+        name="Sales Analysis"
+        parent="stock.menu_warehouse_report"
+        sequence="500"
+        action="action_sale_line_inventory_report"
+    />
 </odoo>

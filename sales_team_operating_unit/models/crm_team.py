@@ -15,7 +15,6 @@ class CrmTeam(models.Model):
         default=lambda self: self.env["res.users"].operating_unit_default_get(),
     )
 
-
     @api.constrains("operating_unit_id", "company_id")
     def _check_company_operating_unit(self):
         for team in self:

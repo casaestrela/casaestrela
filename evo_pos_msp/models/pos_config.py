@@ -1,7 +1,7 @@
-from odoo import models, fields, api
+from odoo import api, fields, models
 
 
 class POSConfig(models.Model):
-    _inherit = 'pos.config'
+    _inherit = "pos.config"
 
-    enable_msp = fields.Boolean('Active Sale Commission')
+    enable_msp = fields.Boolean("Active Sale Commission")

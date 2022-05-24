@@ -1,13 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
     <template id="assets_pos_extend" inherit_id="point_of_sale.assets">
         <xpath expr="." position="inside">
-        	<script type="text/javascript" src="/evo_pos_payment_enhancement/static/src/js/model.js"/>
-			<script type="text/javascript" src="/evo_pos_payment_enhancement/static/src/js/ChequeInformation.js"/>        	
-        	<script type="text/javascript" src="/evo_pos_payment_enhancement/static/src/js/Paymentscreen.js"/>
-        	<script type="text/javascript" src="/evo_pos_payment_enhancement/static/src/js/ProductScreen.js"/>
+            <script
+                type="text/javascript"
+                src="/evo_pos_payment_enhancement/static/src/js/model.js"
+            />
+            <script
+                type="text/javascript"
+                src="/evo_pos_payment_enhancement/static/src/js/ChequeInformation.js"
+            />
+            <script
+                type="text/javascript"
+                src="/evo_pos_payment_enhancement/static/src/js/Paymentscreen.js"
+            />
+            <script
+                type="text/javascript"
+                src="/evo_pos_payment_enhancement/static/src/js/ProductScreen.js"
+            />
         </xpath>
     </template>
-
 </odoo>

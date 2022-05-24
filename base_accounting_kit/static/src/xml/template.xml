@@ -2,15 +2,24 @@
 <templates id="template" xml:space="preserve">
     <t t-name="Invoicedashboard">
         <div class="accounts-dashboard-wrap">
-            <div class="o_dashboards col-xs-12 col-sm-12 col-lg-12 col-md-12" style="background-color: #e1e1e1;overflow: scroll; !important; ">
+            <div
+                class="o_dashboards col-xs-12 col-sm-12 col-lg-12 col-md-12"
+                style="background-color: #e1e1e1;overflow: scroll; !important; "
+            >
                 <div class="content-header">
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-12">
                                 <div class="dash-header">
                                     <h1 class="custom-h1 dashboard-h1">Dashboard </h1>
-                                    <input type="checkbox" style="display:none" data-toggle="toggle" data-on="" data-off="">
-                                    <input type="checkbox" id="toggle-two"></input>
+                                    <input
+                                        type="checkbox"
+                                        style="display:none"
+                                        data-toggle="toggle"
+                                        data-on=""
+                                        data-off=""
+                                    >
+                                        <input type="checkbox" id="toggle-two" />
                                     </input>
                                 </div>
                             </div>
@@ -30,12 +39,16 @@
                                         <div id="monthly_invoice">
                                             <div class="left">
                                                 <div class="count">
-                                                    <span id="net_profit_current_year" />
+                                                    <span
+                                                        id="net_profit_current_year"
+                                                    />
                                                 </div>
                                             </div>
                                             <div class="right">
                                                 <div class="count">
-                                                    <span id="net_profit_current_months" />
+                                                    <span
+                                                        id="net_profit_current_months"
+                                                    />
                                                 </div>
                                             </div>
                                         </div>
@@ -50,7 +63,9 @@
                                         <div id="monthly_income">
                                             <div class="left">
                                                 <div class="count">
-                                                    <span id="total_incomes_this_year" />
+                                                    <span
+                                                        id="total_incomes_this_year"
+                                                    />
                                                 </div>
                                             </div>
                                             <div class="right">
@@ -70,7 +85,9 @@
                                         <div id="monthly_expense">
                                             <div class="left">
                                                 <div class="count">
-                                                    <span id="total_expense_this_year" />
+                                                    <span
+                                                        id="total_expense_this_year"
+                                                    />
                                                 </div>
                                             </div>
                                             <div class="right">
@@ -90,7 +107,9 @@
                                         <div id="monthly_unreconciled">
                                             <div class="left">
                                                 <div class="count">
-                                                    <span id="unreconciled_counts_this_year" />
+                                                    <span
+                                                        id="unreconciled_counts_this_year"
+                                                    />
                                                 </div>
                                             </div>
                                             <div class="right">
@@ -119,11 +138,26 @@
                                 </div>
                                 <div class="card-tools">
                                     <select id="income_expense_values">
-                                        <option id="income_this_year" value="income_this_year">This Year</option>
-                                        <option id="income_this_month" value="income_this_month">This Month</option>
-                                        <div role="separator" class="dropdown-divider" />
-                                        <option id="income_last_month" value="income_last_month">Last Month</option>
-                                        <option id="income_last_year" value="income_this_year">Last Year</option>
+                                        <option
+                                            id="income_this_year"
+                                            value="income_this_year"
+                                        >This Year</option>
+                                        <option
+                                            id="income_this_month"
+                                            value="income_this_month"
+                                        >This Month</option>
+                                        <div
+                                            role="separator"
+                                            class="dropdown-divider"
+                                        />
+                                        <option
+                                            id="income_last_month"
+                                            value="income_last_month"
+                                        >Last Month</option>
+                                        <option
+                                            id="income_last_year"
+                                            value="income_this_year"
+                                        >Last Year</option>
                                     </select>
                                 </div>
                             </div>
@@ -132,7 +166,11 @@
                                     <div class="col-md-12">
                                         <p id="myelement1"> </p>
                                         <div class="chart">
-                                            <canvas id="canvas" width="300" height="200"> </canvas>
+                                            <canvas
+                                                id="canvas"
+                                                width="300"
+                                                height="200"
+                                            > </canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -149,8 +187,14 @@
                                 </div>
                                 <div class="card-tools">
                                     <select id="invoice_values">
-                                        <option id="invoice_this_month" value="this_month">This Month</option>
-                                        <option id="invoice_this_year" value="this_year">This Year</option>
+                                        <option
+                                            id="invoice_this_month"
+                                            value="this_month"
+                                        >This Month</option>
+                                        <option
+                                            id="invoice_this_year"
+                                            value="this_year"
+                                        >This Year</option>
                                     </select>
                                 </div>
                             </div>
@@ -158,55 +202,116 @@
                             <div class="card-body" id="">
                                 <div class="row">
                                     <div class="col-md-12 mt-3">
-                                        <h1 class="custom-h1" style="margin-bottom: 0;">Customer Invoice</h1>
+                                        <h1
+                                            class="custom-h1"
+                                            style="margin-bottom: 0;"
+                                        >Customer Invoice</h1>
                                         <ul class="skill-list">
-                                            <li class="skill" style="display: flex;justify-content: space-between;color: #000;">
+                                            <li
+                                                class="skill"
+                                                style="display: flex;justify-content: space-between;color: #000;"
+                                            >
                                                 <p id="total_customer_invoice_paid" />
                                                 <p id="total_customer_invoice" />
-                                                <p id="total_customer_invoice_paid_current_year" />
-                                                <p id="total_customer_invoice_current_year" />
-                                                <p id="total_customer_invoice_paid_current_month" />
-                                                <p id="total_customer_invoice_current_month" />
+                                                <p
+                                                    id="total_customer_invoice_paid_current_year"
+                                                />
+                                                <p
+                                                    id="total_customer_invoice_current_year"
+                                                />
+                                                <p
+                                                    id="total_customer_invoice_paid_current_month"
+                                                />
+                                                <p
+                                                    id="total_customer_invoice_current_month"
+                                                />
                                             </li>
                                             <li>
-                                                <progress id="tot_invoice" class="skill-1" max="" value="">
+                                                <progress
+                                                    id="tot_invoice"
+                                                    class="skill-1"
+                                                    max=""
+                                                    value=""
+                                                >
                                                     <strong>Skill Level: 50%</strong>
                                                 </progress>
                                             </li>
                                             <li>
-                                                <progress id="tot_invoice_current_year" class="skill-1" max="" value="">
+                                                <progress
+                                                    id="tot_invoice_current_year"
+                                                    class="skill-1"
+                                                    max=""
+                                                    value=""
+                                                >
                                                     <strong>Skill Level: 50%</strong>
                                                 </progress>
                                             </li>
                                             <li>
-                                                <progress id="tot_invoice_current_month" class="skill-1" max="" value="">
+                                                <progress
+                                                    id="tot_invoice_current_month"
+                                                    class="skill-1"
+                                                    max=""
+                                                    value=""
+                                                >
                                                     <strong>Skill Level: 50%</strong>
                                                 </progress>
                                             </li>
                                         </ul>
-                                        <div role="separator" class="dropdown-divider" />
-                                        <h1 class="custom-h1" style="margin-bottom: 0;">Supplier Invoice</h1>
+                                        <div
+                                            role="separator"
+                                            class="dropdown-divider"
+                                        />
+                                        <h1
+                                            class="custom-h1"
+                                            style="margin-bottom: 0;"
+                                        >Supplier Invoice</h1>
                                         <ul class="skill-list">
-                                            <li class="skill" style="display: flex;justify-content: space-between;color: #000;">
-                                                <p id="total_supplier_invoice_paid"/>
+                                            <li
+                                                class="skill"
+                                                style="display: flex;justify-content: space-between;color: #000;"
+                                            >
+                                                <p id="total_supplier_invoice_paid" />
                                                 <p id="total_supplier_invoice" />
-                                                <p id="total_supplier_invoice_paid_current_year"/>
-                                                <p id="total_supplier_invoice_current_year" />
-                                                <p id="total_supplier_invoice_paid_current_month"/>
-                                                <p id="total_supplier_invoice_current_month" />
+                                                <p
+                                                    id="total_supplier_invoice_paid_current_year"
+                                                />
+                                                <p
+                                                    id="total_supplier_invoice_current_year"
+                                                />
+                                                <p
+                                                    id="total_supplier_invoice_paid_current_month"
+                                                />
+                                                <p
+                                                    id="total_supplier_invoice_current_month"
+                                                />
                                             </li>
                                             <li>
-                                                <progress id="tot_supplier_inv" class="skill-1" max="" value="">
+                                                <progress
+                                                    id="tot_supplier_inv"
+                                                    class="skill-1"
+                                                    max=""
+                                                    value=""
+                                                >
                                                     <strong>Skill Level: 50%</strong>
                                                 </progress>
                                             </li>
                                             <li>
-                                                <progress id="tot_supplier_inv_current_year" class="skill-1" max="" value="">
+                                                <progress
+                                                    id="tot_supplier_inv_current_year"
+                                                    class="skill-1"
+                                                    max=""
+                                                    value=""
+                                                >
                                                     <strong>Skill Level: 50%</strong>
                                                 </progress>
                                             </li>
                                             <li>
-                                                <progress id="tot_supplier_inv_current_month" class="skill-1" max="" value="">
+                                                <progress
+                                                    id="tot_supplier_inv_current_month"
+                                                    class="skill-1"
+                                                    max=""
+                                                    value=""
+                                                >
                                                     <strong>Skill Level: 50%</strong>
                                                 </progress>
                                             </li>
@@ -218,14 +323,24 @@
                     </div>
                     <div class="col-md-4" id="col-graph">
                         <div class="card">
-                            <div class="card-body p-0" style=" height: 287px; overflow-y: auto; ">
-                                <div class="card-header" style=" padding: 17px 1.5rem !important; display: flex !IMPORTANT; justify-content: space-between; align-items: center; ">
+                            <div
+                                class="card-body p-0"
+                                style=" height: 287px; overflow-y: auto; "
+                            >
+                                <div
+                                    class="card-header"
+                                    style=" padding: 17px 1.5rem !important; display: flex !IMPORTANT; justify-content: space-between; align-items: center; "
+                                >
                                     <h3 class="custom-h3 card-title">
                                         <b>BANK AND CASH BALANCE</b>
                                     </h3>
                                 </div>
-                                <div class="card-body p-0" style=" height: 100px; " id="bank_balance_body_hide">
-                                    <ul id="current_bank_balance"></ul>
+                                <div
+                                    class="card-body p-0"
+                                    style=" height: 100px; "
+                                    id="bank_balance_body_hide"
+                                >
+                                    <ul id="current_bank_balance" />
                                 </div>
                             </div>
                         </div>
@@ -240,8 +355,14 @@
                                 </div>
                                 <div class="card-tools">
                                     <select id="aged_receivable_values">
-                                        <option id="aged_payable_this_month" value="this_month">This Month</option>
-                                        <option id="aged_payable_this_year" value="this_year">This Year</option>
+                                        <option
+                                            id="aged_payable_this_month"
+                                            value="this_month"
+                                        >This Month</option>
+                                        <option
+                                            id="aged_payable_this_year"
+                                            value="this_year"
+                                        >This Year</option>
                                     </select>
                                 </div>
                             </div>
@@ -250,7 +371,11 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div>
-                                            <canvas id="canvas1" height="250px" width="400px"></canvas>
+                                            <canvas
+                                                id="canvas1"
+                                                height="250px"
+                                                width="400px"
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -267,8 +392,14 @@
                                 </div>
                                 <div class="card-tools">
                                     <select id="aged_payable_value">
-                                        <option id="aged_receivable_this_month" value="this_month">This Month</option>
-                                        <option id="aged_receivable_this_year" value="this_year">This Year</option>
+                                        <option
+                                            id="aged_receivable_this_month"
+                                            value="this_month"
+                                        >This Month</option>
+                                        <option
+                                            id="aged_receivable_this_year"
+                                            value="this_year"
+                                        >This Year</option>
                                     </select>
                                 </div>
                             </div>
@@ -277,7 +408,11 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div id="chart">
-                                            <canvas id="horizontalbarChart" width="400" height="250"></canvas>
+                                            <canvas
+                                                id="horizontalbarChart"
+                                                width="400"
+                                                height="250"
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -286,26 +421,42 @@
                     </div>
                     <div class="col-md-4">
                         <div class="card" style="height:366px;">
-                            <div class="card-header" style=" padding: 17px 1.5rem !important; display: flex !IMPORTANT; justify-content: space-between; align-items: center; ">
+                            <div
+                                class="card-header"
+                                style=" padding: 17px 1.5rem !important; display: flex !IMPORTANT; justify-content: space-between; align-items: center; "
+                            >
                                 <h3 class="custom-h3 card-title">
                                     <b>TOP 10 CUSTOMERS</b>
                                 </h3>
-
                                 <div class="card-tools">
                                     <select id="top_10_customer_value">
-<!--                                        <option id="null" value="null"></option>-->
-                                        <option id="top_10_customer_this_month" value="this_month">This Month</option>
-                                        <div role="separator" class="dropdown-divider" />
-                                        <option id="top_10_customer_last_month" value="last_month">Last Month</option>
-
+                                        <!--                                        <option id="null" value="null"></option>-->
+                                        <option
+                                            id="top_10_customer_this_month"
+                                            value="this_month"
+                                        >This Month</option>
+                                        <div
+                                            role="separator"
+                                            class="dropdown-divider"
+                                        />
+                                        <option
+                                            id="top_10_customer_last_month"
+                                            value="last_month"
+                                        >Last Month</option>
                                     </select>
                                 </div>
                             </div>
-
-                            <div class="card-body p-0" style=" height: 287px; overflow-y: auto; " id="top_10_body">
-<!--                                <ul class="users-list clearfix" id="top_10_customers"></ul>-->
-                                <ul class="users-list clearfix" id="top_10_customers_this_month"></ul>
-<!--                                <ul class="users-list clearfix" id="top_10_customers_last_month"></ul>-->
+                            <div
+                                class="card-body p-0"
+                                style=" height: 287px; overflow-y: auto; "
+                                id="top_10_body"
+                            >
+                                <!--                                <ul class="users-list clearfix" id="top_10_customers"></ul>-->
+                                <ul
+                                    class="users-list clearfix"
+                                    id="top_10_customers_this_month"
+                                />
+                                <!--                                <ul class="users-list clearfix" id="top_10_customers_last_month"></ul>-->
                             </div>
                         </div>
                     </div>
@@ -318,7 +469,7 @@
                     <div class="manager_filter_class" />
                 </div>
             </div>
-            <div id="chart-container"></div>
+            <div id="chart-container" />
         </div>
     </t>
 </templates>

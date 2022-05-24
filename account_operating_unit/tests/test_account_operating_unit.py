@@ -30,10 +30,7 @@ class TestAccountOperatingUnit(AccountTestInvoicingCommon):
         self.env.user.write(
             {
                 "company_ids": [(4, self.env.ref("base.main_company").id)],
-                "operating_unit_ids": [
-                    (4, self.b2b.id),
-                    (4, self.b2c.id),
-                ],
+                "operating_unit_ids": [(4, self.b2b.id), (4, self.b2c.id),],
             }
         )
         # Assign company to OU

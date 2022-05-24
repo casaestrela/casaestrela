@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #############################################################################
 #
 #    Cybrosys Technologies Pvt. Ltd.
@@ -28,24 +27,32 @@ from odoo import fields, models
 class ResPartner(models.Model):
     _inherit = "res.partner"
 
-    invoice_list = fields.One2many('account.move', 'partner_id',
-                                   string="Invoice Details",
-                                   readonly=True,
-                                   domain=(
-                                   [('payment_state', '=', 'not_paid'),
-                                    ('move_type', '=', 'out_invoice')]))
-    total_due = fields.Monetary(compute='_compute_for_followup', store=False,
-                                readonly=True)
-    next_reminder_date = fields.Date(compute='_compute_for_followup',
-                                     store=False, readonly=True)
-    total_overdue = fields.Monetary(compute='_compute_for_followup',
-                                    store=False, readonly=True)
+    invoice_list = fields.One2many(
+        "account.move",
+        "partner_id",
+        string="Invoice Details",
+        readonly=True,
+        domain=(
+            [("payment_state", "=", "not_paid"), ("move_type", "=", "out_invoice")]
+        ),
+    )
+    total_due = fields.Monetary(
+        compute="_compute_for_followup", store=False, readonly=True
+    )
+    next_reminder_date = fields.Date(
+        compute="_compute_for_followup", store=False, readonly=True
+    )
+    total_overdue = fields.Monetary(
+        compute="_compute_for_followup", store=False, readonly=True
+    )
     followup_status = fields.Selection(
-        [('in_need_of_action', 'In need of action'),
-         ('with_overdue_invoices', 'With overdue invoices'),
-         ('no_action_needed', 'No action needed')],
-        string='Followup status',
-        )
+        [
+            ("in_need_of_action", "In need of action"),
+            ("with_overdue_invoices", "With overdue invoices"),
+            ("no_action_needed", "No action needed"),
+        ],
+        string="Followup status",
+    )
 
     def _compute_for_followup(self):
         """
@@ -60,7 +67,11 @@ class ResPartner(models.Model):
                     amount = am.amount_residual
                     total_due += amount
 
-                    is_overdue = today > am.invoice_date_due if am.invoice_date_due else today > am.date
+                    is_overdue = (
+                        today > am.invoice_date_due
+                        if am.invoice_date_due
+                        else today > am.date
+                    )
                     if is_overdue:
                         total_overdue += amount or 0
             min_date = record.get_min_date()
@@ -86,8 +97,8 @@ class ResPartner(models.Model):
         today = date.today()
         for this in self:
             if this.invoice_list:
-                if this.invoice_list.mapped('invoice_date_due'):
-                    min_list = this.invoice_list.mapped('invoice_date_due')
+                if this.invoice_list.mapped("invoice_date_due"):
+                    min_list = this.invoice_list.mapped("invoice_date_due")
                     while False in min_list:
                         min_list.remove(False)
                     return min(min_list)
@@ -103,12 +114,12 @@ class ResPartner(models.Model):
 
         return record
 
-
     def action_after(self):
-        lines = self.env['followup.line'].search([(
-            'followup_id.company_id', '=', self.env.company.id)])
+        lines = self.env["followup.line"].search(
+            [("followup_id.company_id", "=", self.env.company.id)]
+        )
 
         if lines:
             record = self.get_delay()
             for i in record:
-                return i['delay']
+                return i["delay"]
