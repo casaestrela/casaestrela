@@ -1,16 +1,17 @@
-from odoo import _, api, fields, models
+from odoo import fields, models
 
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    def payment_total(self):
+    def _payment_total(self):
         for rec in self:
             if rec.invoice_ids:
                 total_inv_payment = 0
                 for inv in rec.invoice_ids:
                     inv_payment = self.env["advance.payment.line"].search(
-                        [("invoice_id", "=", inv.id), ("invoice_id", "!=", False)]
+                        [("invoice_id", "=", inv.id),
+                         ("invoice_id", "!=", False)]
                     )
                     for pay_line in inv_payment:
                         total_inv_payment += pay_line.reconcile_amount
@@ -19,7 +20,7 @@ class SaleOrder(models.Model):
                 rec.total_sale_payment = 0.0
 
     total_sale_payment = fields.Monetary(
-        string="Total Invoiced", compute="payment_total"
+        string="Total Invoiced", compute="_payment_total"
     )
 
     def action_view_sale_payment(self):

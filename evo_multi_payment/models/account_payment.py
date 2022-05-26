@@ -8,12 +8,14 @@ class AccountMoveLine(models.Model):
     invoice_id = fields.Many2one("account.move", string="Invoice")
 
     def reconcile(self):
-        """ Reconcile the current move lines all together.
-        :return: A dictionary representing a summary of what has been done during the reconciliation:
-                * partials:             A recorset of all account.partial.reconcile created during the reconciliation.
-                * full_reconcile:       An account.full.reconcile record created when there is nothing left to reconcile
-                                        in the involved lines.
-                * tax_cash_basis_moves: An account.move recordset representing the tax cash basis journal entries.
+        """ Reconcile the current move lines all together. :return: A
+        dictionary representing a summary of what has been done during the
+        reconciliation: * partials:             A recorset of all
+        account.partial.reconcile created during the reconciliation. *
+        full_reconcile:       An account.full.reconcile record created when
+        there is nothing left to reconcile in the involved lines. *
+        tax_cash_basis_moves: An account.move recordset representing the tax
+        cash basis journal entries.
         """
         results = {}
 
@@ -33,7 +35,8 @@ class AccountMoveLine(models.Model):
             if line.reconciled:
                 raise UserError(
                     _(
-                        "You are trying to reconcile some entries that are already reconciled."
+                        "You are trying to reconcile some entries that are "
+                        "already reconciled. "
                     )
                 )
             if (
@@ -42,7 +45,8 @@ class AccountMoveLine(models.Model):
             ):
                 raise UserError(
                     _(
-                        "Account %s does not allow reconciliation. First change the configuration of this account to allow it."
+                        "Account %s does not allow reconciliation. First "
+                        "change the configuration of this account to allow it. "
                     )
                     % line.account_id.display_name
                 )
@@ -67,7 +71,8 @@ class AccountMoveLine(models.Model):
             key=lambda line: (line.date_maturity or line.date, line.currency_id)
         )
 
-        # ==== Collect all involved lines through the existing reconciliation ====
+        # ==== Collect all involved lines through the existing reconciliation
+        # ====
 
         involved_lines = sorted_lines
         involved_partials = self.env["account.partial.reconcile"]
@@ -199,9 +204,10 @@ class Payment(models.Model):
                 if ad_lines_total > round(rec.amount, 2) or ad_lines_total < round(
                     rec.amount, 2
                 ):
-                    raise ValidationError(
-                        "Allocation amount cannot be more or less then Payment amount."
-                    )
+                    raise ValidationError(_(
+                        "Allocation amount cannot be more or less then "
+                        "Payment amount. "
+                    ))
 
         return res
 
@@ -215,9 +221,9 @@ class Payment(models.Model):
                 if round(ad_lines_total, 2) > round(rec.amount, 2) or round(
                     ad_lines_total, 2
                 ) < round(rec.amount, 2):
-                    raise ValidationError(
+                    raise ValidationError(_(
                         "Allocation amount cannot be more or less then Amount."
-                    )
+                    ))
         return res
 
     @api.onchange("payment_type", "partner_type", "partner_id", "currency_id")
@@ -259,7 +265,8 @@ class Payment(models.Model):
                 if payment.amount < sum(payment.ad_line_ids.mapped("reconcile_amount")):
                     raise UserError(
                         _(
-                            "The sum of the reconcile amount of listed invoices are greater than payment's amount."
+                            "The sum of the reconcile amount of listed "
+                            "invoices are greater than payment's amount. "
                         )
                     )
 

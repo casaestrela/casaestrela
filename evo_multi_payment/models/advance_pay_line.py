@@ -1,7 +1,7 @@
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 
 
-class advance_payment_line(models.Model):
+class AdvancePaymentLine(models.Model):
     _name = "advance.payment.line"
     _description = "Advance Payment Line"
 
@@ -12,14 +12,17 @@ class advance_payment_line(models.Model):
     date_invoice = fields.Date(related="invoice_id.invoice_date")
     date_due = fields.Date(related="invoice_id.invoice_date_due")
     payment_state = fields.Selection(related="payment_id.state", store=True)
-    pay_amount = fields.Monetary(string="Net Amount", compute="compute_pay_amount")
+    pay_amount = fields.Monetary(string="Net Amount",
+                                 compute="_compute_pay_amount")
     # pay_amount = fields.Monetary(string='Pay Amount')
     reconcile_amount = fields.Monetary(string="Pay Amount")
-    # reconcile_amount = fields.Monetary(string='Net Amount', compute='compute_reconcile_amount')
+    # reconcile_amount = fields.Monetary(string='Net Amount',
+    # compute='compute_reconcile_amount')
     untax_amount = fields.Monetary(
         related="invoice_id.amount_untaxed", string="Untaxed Amount"
     )
-    tax_amount = fields.Monetary(related="invoice_id.amount_tax", string="Tax Amount")
+    tax_amount = fields.Monetary(related="invoice_id.amount_tax",
+                                 string="Tax Amount")
     amount_total = fields.Monetary(related="invoice_id.amount_total")
     residual = fields.Monetary(related="invoice_id.amount_residual")
     invoice_tds_id = fields.Many2one("account.tax", string="TDS")
@@ -35,7 +38,7 @@ class advance_payment_line(models.Model):
                 rec.invoice_tds_amount = 0.0
 
     @api.depends("reconcile_amount", "invoice_tds_amount")
-    def compute_pay_amount(self):
+    def _compute_pay_amount(self):
         for rec in self:
             rec.pay_amount = rec.reconcile_amount + rec.invoice_tds_amount
 
