@@ -2,10 +2,10 @@
     "name": "Evo MSP In Point Of Sale",
     "summary": """MSP In Point Of Sale For Odoo 14""",
     "description": """Odoo 14.0 MSP In Point Of Sale""",
-    "author": "",
-    "website": "",
+    "author": "Evozard",
+    "website": "http://evozard.com/",
     "category": "stock",
-    "version": "1.0",
+    "version": "14.0.0.1",
     "depends": ["point_of_sale", "msp_percentage_price"],
     "data": [
         "views/assests.xml",

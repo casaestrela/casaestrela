@@ -25,8 +25,8 @@ class PosOrder(models.Model):
 
         session_id = self.env["pos.session"].browse(ui_order["pos_session_id"])
 
-        if session_id.config_id.enable_msp == True:
-            if ui_order["allow_msp"] == True:
+        if session_id.config_id.enable_msp is True:
+            if ui_order["allow_msp"] is True:
                 for line in ui_order["lines"]:
                     product_id = self.env["product.product"].browse(
                         line[2]["product_id"]
@@ -87,10 +87,10 @@ class PosOrderLine(models.Model):
     _inherit = "pos.order.line"
 
     msp_percentage = fields.Float("MSP Percentage")
-    msp_subtotal = fields.Float("MSP Subtotal", compute="get_msp_subtotal")
+    msp_subtotal = fields.Float("MSP Subtotal", compute="_get_msp_subtotal")
 
     @api.depends("msp_percentage", "price_subtotal_incl")
-    def get_msp_subtotal(self):
+    def _get_msp_subtotal(self):
         for record in self:
             # record.msp_subtotal = record.price_subtotal - ((record.price_subtotal * record.msp_percentage) / 100)
             record.msp_subtotal = record.price_subtotal_incl - (
