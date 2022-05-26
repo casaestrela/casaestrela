@@ -1,16 +1,18 @@
-from odoo import _, api, exceptions, fields, models
-from odoo.exceptions import UserError
+from odoo import _, models
 
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     def action_confirm_wo_pay(self):
-        # for line in self.order_line:
-        #     product_context = dict(self.env.context, partner_id=self.partner_id.id, date=self.date_order, uom=line.product_uom.id)
-        #     price, rule_id = self.pricelist_id.with_context(product_context).get_product_price_rule(line.product_id, line.product_uom_qty or 1.0, self.partner_id)
-        #     if price > line.price_unit:
-        #         raise UserError(_("Price cannot be lower then price list"))
+        # for line in self.order_line: product_context = dict(
+        # self.env.context, partner_id=self.partner_id.id,
+        # date=self.date_order, uom=line.product_uom.id) price, rule_id =
+        # self.pricelist_id.with_context(
+        # product_context).get_product_price_rule(line.product_id,
+        # line.product_uom_qty or 1.0, self.partner_id) if price >
+        # line.price_unit: raise UserError(_("Price cannot be lower then
+        # price list"))
 
         for rec in self:
             rec.action_confirm()
@@ -27,15 +29,18 @@ class SaleOrder(models.Model):
                 invoice.action_post()
 
     def action_confirm_pay(self):
-        # for line in self.order_line:
-        #     product_context = dict(self.env.context, partner_id=self.partner_id.id, date=self.date_order, uom=line.product_uom.id)
-        #     price, rule_id = self.pricelist_id.with_context(product_context).get_product_price_rule(line.product_id, line.product_uom_qty or 1.0, self.partner_id)
-        #     if price > line.price_unit:
-        #         raise UserError(_("Price cannot be lower then price list"))
+        # for line in self.order_line: product_context = dict(
+        # self.env.context, partner_id=self.partner_id.id,
+        # date=self.date_order, uom=line.product_uom.id) price, rule_id =
+        # self.pricelist_id.with_context(
+        # product_context).get_product_price_rule(line.product_id,
+        # line.product_uom_qty or 1.0, self.partner_id) if price >
+        # line.price_unit: raise UserError(_("Price cannot be lower then
+        # price list"))
         wizard_id = (
             self.env["sale.order.confirm.wizard"]
             .sudo()
-            .create({"sale_order_id": self.id, "amount": self.amount_total,})
+            .create({"sale_order_id": self.id, "amount": self.amount_total})
         )
         form_view_id = self.env.ref("evo_auto_invoice.view_sale_order_confirm_wizard")
         return {

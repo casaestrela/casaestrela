@@ -1,4 +1,4 @@
-from odoo import _, api, exceptions, fields, models
+from odoo import api, fields, models
 
 
 class AccountPayment(models.Model):

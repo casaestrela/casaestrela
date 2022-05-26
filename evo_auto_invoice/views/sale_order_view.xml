@@ -25,10 +25,8 @@
                 />
             </xpath>
             <xpath expr="//header/button[8]" position="replace">
-
         	</xpath>
             <xpath expr="//header/button[9]" position="replace">
-
         	</xpath>
         </field>
     </record>

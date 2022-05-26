@@ -1,9 +1,5 @@
-from datetime import datetime, time, timedelta
 
-from dateutil.relativedelta import relativedelta
-
-from odoo import _, api, fields, models
-from odoo.exceptions import Warning
+from odoo import api, fields, models
 
 
 class SaleOrderConfirmWizard(models.TransientModel):
@@ -39,7 +35,7 @@ class SaleOrderConfirmWizard(models.TransientModel):
     @api.onchange("payment_method_id")
     def onchange_payment_method(self):
         for rec in self:
-            if rec.payment_method_id.is_cheque == True:
+            if rec.payment_method_id.is_cheque is True:
                 rec.is_cheque = True
             else:
                 rec.is_cheque = False

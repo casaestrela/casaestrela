@@ -2,10 +2,10 @@
     "name": "Evo Auto Generate Invoice From Sale Order",
     "summary": """Auto Generate Invoice From Sale Order For Odoo 14""",
     "description": """Odoo 14.0 Auto Generate Invoice From Sale Order""",
-    "author": "",
-    "website": "",
+    "author": "Evozard",
+    "website": "www.evozard.com",
     "category": "sale",
-    "version": "1.0",
+    "version": "14.0.0.1",
     "depends": ["sale_management", "account"],
     "data": [
         "security/ir.model.access.csv",
