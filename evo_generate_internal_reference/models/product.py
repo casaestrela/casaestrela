@@ -13,7 +13,7 @@ class ProductTemplate(models.Model):
         res = super(ProductTemplate, self).default_get(field_list)
 
         res.update(
-            {"available_in_pos": True,}
+            {"available_in_pos": True}
         )
 
         return res
@@ -54,7 +54,7 @@ class ProductProduct(models.Model):
         res = super(ProductProduct, self).default_get(field_list)
 
         res.update(
-            {"available_in_pos": True,}
+            {"available_in_pos": True}
         )
 
         return res

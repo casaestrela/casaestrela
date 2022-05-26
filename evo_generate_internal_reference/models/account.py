@@ -1,7 +1,7 @@
 import re
 from collections import defaultdict
 
-from odoo import _, api, fields, models
+from odoo import api, models
 from odoo.exceptions import ValidationError
 
 
@@ -32,17 +32,20 @@ class AccountMove(models.Model):
         # Group the moves by journal and month
         for move in self:
             if not highest_name and move == self[0] and not move.posted_before:
-                # In the form view, we need to compute a default sequence so that the user can edit
-                # it. We only check the first move as an approximation (enough for new in form view)
+                # In the form view, we need to compute a default sequence so
+                # that the user can edit it. We only check the first move as
+                # an approximation (enough for new in form view)
                 pass
             elif (move.name and move.name != "/") or move.state != "posted":
                 try:
                     if not move.posted_before:
                         move._constrains_date_sequence()
-                    # Has already a name or is not posted, we don't add to a batch
+                    # Has already a name or is not posted, we don't add to a
+                    # batch
                     continue
                 except ValidationError:
-                    # Has never been posted and the name doesn't match the date: recompute it
+                    # Has never been posted and the name doesn't match the
+                    # date: recompute it
                     pass
             group = grouped[journal_key(move)][date_key(move)]
             if not group["records"]:
@@ -55,8 +58,9 @@ class AccountMove(models.Model):
                 group["reset"] = move._deduce_sequence_number_reset(move.name)
             group["records"] += move
 
-        # Fusion the groups depending on the sequence reset and the format used because `seq` is
-        # the same counter for multiple groups that might be spread in multiple months.
+        # Fusion the groups depending on the sequence reset and the format
+        # used because `seq` is the same counter for multiple groups that
+        # might be spread in multiple months.
         final_batches = []
         for journal_group in grouped.values():
             journal_group_changed = True
@@ -121,7 +125,8 @@ class AccountMove(models.Model):
             and "prefix1" in format_values
             and "suffix" in format_values
         ):
-            # if we don't have a seq, consider we only have a prefix and not a suffix
+            # if we don't have a seq, consider we only have a prefix and not
+            # a suffix
             format_values["prefix1"] = format_values["suffix"]
             format_values["suffix"] = ""
         for field in ("seq", "year", "month"):
