@@ -1,4 +1,4 @@
-from odoo import _, api, exceptions, fields, models
+from odoo import api, fields, models
 
 
 class SaleOrder(models.Model):
@@ -28,7 +28,7 @@ class SaleOrderLine(models.Model):
     def get_msp_subtotal(self):
         res = super(SaleOrderLine, self).get_msp_subtotal()
         for record in self:
-            if record.order_id.allow_msp == True:
+            if record.order_id.allow_msp is True:
                 record.msp_subtotal = record.price_total - (
                     (record.price_total * record.msp_percentage) / 100
                 )

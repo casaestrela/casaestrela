@@ -1,11 +1,7 @@
 import base64
-from datetime import datetime, timedelta
-from io import BytesIO
-
-from dateutil.relativedelta import relativedelta
 
 from odoo import _, fields, models
-from odoo.exceptions import Warning
+
 from odoo.tools.misc import xlwt
 
 
