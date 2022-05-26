@@ -1,5 +1,4 @@
-from odoo import _, api, exceptions, fields, models
-from odoo.exceptions import UserError
+from odoo import api, fields, models
 
 
 class HRExpenseSheet(models.Model):
@@ -9,7 +8,8 @@ class HRExpenseSheet(models.Model):
     def _default_bank_journal_id(self):
         default_company_id = self.default_get(["company_id"])["company_id"]
         return self.env["account.journal"].search(
-            [("type", "in", ["cash", "bank"]), ("company_id", "=", default_company_id)],
+            [("type", "in", ["cash", "bank"]),
+             ("company_id", "=", default_company_id)],
             limit=1,
         )
 
@@ -30,7 +30,10 @@ class HrExpense(models.Model):
     @api.model
     def _default_analytic_account_id(self):
         return self.env["account.analytic.account"].search(
-            [("operating_unit_ids", "=", self.env.user.default_operating_unit_id.id)],
+            [(
+                "operating_unit_ids", "=",
+                self.env.user.default_operating_unit_id.id
+            )],
             limit=1,
         )
 
