@@ -1,6 +1,4 @@
-from functools import partial
-
-from odoo import api, fields, models
+from odoo import api, models
 
 
 class PosOrder(models.Model):
