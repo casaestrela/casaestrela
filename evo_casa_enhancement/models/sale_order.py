@@ -1,4 +1,4 @@
-from odoo import _, api, exceptions, fields, models
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -27,11 +27,11 @@ class SaleOrderLine(models.Model):
         "account.move",
         string="Invoice Reference",
         store=True,
-        compute="compute_invoice_id",
+        compute="_compute_invoice_id",
     )
 
     @api.depends("order_id.invoice_ids")
-    def compute_invoice_id(self):
+    def _compute_invoice_id(self):
         for rec in self:
             if rec.order_id.invoice_ids:
                 rec.invoice_id = rec.order_id.invoice_ids[0].id
@@ -83,15 +83,15 @@ class SaleOrderLine(models.Model):
                     ["invoice_repartition_line_ids"], [line.tax_id.id]
                 )
 
-    # @api.onchange('discount','price_unit')
-    # def onchange_discount(self):
-    #     for rec in self:
-    #         rec.discount_amount = (( rec.price_unit * rec.product_uom_qty) * rec.discount ) / 100
+    # @api.onchange('discount','price_unit') def onchange_discount(self): for
+    # rec in self: rec.discount_amount = (( rec.price_unit *
+    # rec.product_uom_qty) * rec.discount ) / 100
 
     @api.onchange("discount_amount", "price_unit", "product_uom_qty")
     def onchange_discount_amount(self):
         for rec in self:
-            # rec.discount = ((rec.price_unit * rec.product_uom_qty) * (rec.discount_amount / 100))/100
+            # rec.discount = ((rec.price_unit * rec.product_uom_qty) * (
+            # rec.discount_amount / 100))/100
             if rec.discount_amount:
                 rec.discount = (rec.discount_amount * 100) / (
                     rec.price_unit * rec.product_uom_qty

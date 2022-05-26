@@ -1,4 +1,4 @@
-from odoo import _, api, exceptions, fields, models
+from odoo import fields, models
 
 
 class ReasonMaster(models.Model):

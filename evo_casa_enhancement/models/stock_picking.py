@@ -1,4 +1,4 @@
-from odoo import _, api, exceptions, fields, models
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -11,10 +11,10 @@ class StockPicking(models.Model):
     )  # compute='compute_verify_user'
     verify_bool = fields.Boolean(string="Verify User Boolean")
     current_user_id = fields.Many2one(
-        "res.users", string="User", compute="compute_current_user"
+        "res.users", string="User", compute="_compute_current_user"
     )
 
-    def compute_current_user(self):
+    def _compute_current_user(self):
         for rec in self:
             rec.current_user_id = self.env.user.id
             user_id = self.env.user
@@ -104,11 +104,11 @@ class StockPicking(models.Model):
 
     def button_validate(self):
         for rec in self:
-            # if rec.picking_type_code == 'outgoing':
-            #     for line in rec.move_line_ids_without_package:
-            #         if line.move_id.sale_line_id:
-            #             if line.move_id.sale_line_id.qty_invoiced < line.qty_done:
-            #                 raise UserError(_("Delivery Qty not more than Invoice qty"))
+            # if rec.picking_type_code == 'outgoing': for line in
+            # rec.move_line_ids_without_package: if
+            # line.move_id.sale_line_id: if
+            # line.move_id.sale_line_id.qty_invoiced < line.qty_done: raise
+            # UserError(_("Delivery Qty not more than Invoice qty"))
             if rec.picking_type_code == "internal":
                 if rec.state != "verified":
                     raise UserError(_("Can Not Validate Before Verify."))
@@ -120,14 +120,16 @@ class StockMove(models.Model):
     _inherit = "stock.move"
 
     stock_location_qty = fields.Float(
-        "Stock Location Qty", store=True, compute="compute_stock_location_qty"
+        "Stock Location Qty", store=True, compute="_compute_stock_location_qty"
     )
-    price_unit = fields.Float("Price Unit", store=True, compute="compute_price_unit")
+    price_unit = fields.Float("Price Unit", store=True,
+                              compute="_compute_price_unit")
 
     @api.depends(
-        "product_id", "product_uom_qty", "picking_id.operating_unit_id.pricelist_id"
+        "product_id", "product_uom_qty",
+        "picking_id.operating_unit_id.pricelist_id"
     )
-    def compute_price_unit(self):
+    def _compute_price_unit(self):
         for line in self:
             product_context = dict(
                 self.env.context,
@@ -150,7 +152,7 @@ class StockMove(models.Model):
                     line.price_unit = price
 
     @api.depends("product_id")
-    def compute_stock_location_qty(self):
+    def _compute_stock_location_qty(self):
         for rec in self:
             location_id = (
                 self.env["stock.location"]
@@ -177,14 +179,18 @@ class StockMoveLine(models.Model):
     _inherit = "stock.move.line"
 
     def _get_aggregated_product_quantities(self, **kwargs):
-        """ Returns a dictionary of products (key = id+name+description+uom) and corresponding values of interest.
+        """ Returns a dictionary of products (key = id+name+description+uom)
+        and corresponding values of interest.
 
-        Allows aggregation of data across separate move lines for the same product. This is expected to be useful
-        in things such as delivery reports. Dict key is made as a combination of values we expect to want to group
-        the products by (i.e. so data is not lost). This function purposely ignores lots/SNs because these are
-        expected to already be properly grouped by line.
+        Allows aggregation of data across separate move lines for the same
+        product. This is expected to be useful in things such as delivery
+        reports. Dict key is made as a combination of values we expect to
+        want to group the products by (i.e. so data is not lost). This
+        function purposely ignores lots/SNs because these are expected to
+        already be properly grouped by line.
 
-        returns: dictionary {product_id+name+description+uom: {product, name, description, qty_done, product_uom}, ...}
+        returns: dictionary {product_id+name+description+uom: {product, name,
+        description, qty_done, product_uom}, ...}
         """
         aggregated_move_lines = {}
         for move_line in self:

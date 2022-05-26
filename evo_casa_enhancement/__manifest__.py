@@ -2,10 +2,10 @@
     "name": "Evo Casa Enhancement",
     "summary": """Casa Enhancement For Odoo 14""",
     "description": """Odoo 14.0 Casa Enhancement""",
-    "author": "",
-    "website": "",
+    "author": "Evozard",
+    "website": "www.evozard.com",
     "category": "sale",
-    "version": "1.0",
+    "version": "14.0.0.1",
     "depends": [
         "sale_management",
         "sale_margin",

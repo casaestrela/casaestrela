@@ -1,5 +1,4 @@
-from odoo import _, api, fields, models
-from odoo.exceptions import UserError
+from odoo import api, fields, models
 
 
 class AccountPaymentRegister(models.TransientModel):
@@ -12,7 +11,7 @@ class AccountPaymentRegister(models.TransientModel):
     @api.onchange("journal_id")
     def onchange_payment_method(self):
         for rec in self:
-            if rec.journal_id.is_cheque == True:
+            if rec.journal_id.is_cheque is True:
                 rec.is_cheque = True
             else:
                 rec.is_cheque = False

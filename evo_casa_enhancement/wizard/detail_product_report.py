@@ -2,13 +2,10 @@
 # import xlwt
 import base64
 import logging
-from datetime import datetime, timedelta
+from datetime import datetime
 from io import BytesIO
 
-from dateutil.relativedelta import relativedelta
-
-from odoo import _, api, fields, models
-from odoo.exceptions import Warning
+from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 try:
@@ -29,7 +26,7 @@ class DetailProductReport(models.TransientModel):
         readonly=False,
         string="Allow Operating Unit",
         store=True,
-        compute="compute_allow_operating_units",
+        compute="_compute_allow_operating_units",
     )
     user_id = fields.Many2one("res.users", default=lambda self: self.env.user)
     operating_unit = fields.Many2one(
@@ -40,7 +37,7 @@ class DetailProductReport(models.TransientModel):
     excel_detail_report = fields.Binary("Excel Report")
 
     @api.depends("user_id")
-    def compute_allow_operating_units(self):
+    def _compute_allow_operating_units(self):
         for rec in self:
             user = self.env.user
             for unit_id in user.operating_unit_ids:

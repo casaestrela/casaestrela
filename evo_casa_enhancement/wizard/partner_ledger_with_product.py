@@ -1,10 +1,6 @@
 import base64
-from datetime import datetime, timedelta
-
-from dateutil.relativedelta import relativedelta
 
 from odoo import _, api, fields, models
-from odoo.exceptions import Warning
 from odoo.tools.misc import xlwt
 
 
@@ -21,7 +17,7 @@ class PartnerLedgerWithProduct(models.TransientModel):
         readonly=False,
         string="Allow Operating Unit",
         store=True,
-        compute="compute_allow_operating_units",
+        compute="_compute_allow_operating_units",
     )
     user_id = fields.Many2one("res.users", default=lambda self: self.env.user)
     operating_unit = fields.Many2one(
@@ -32,7 +28,7 @@ class PartnerLedgerWithProduct(models.TransientModel):
     excel_detail_report = fields.Binary("Excel Report")
 
     @api.depends("user_id")
-    def compute_allow_operating_units(self):
+    def _compute_allow_operating_units(self):
         for rec in self:
             user = self.env.user
             for unit_id in user.operating_unit_ids:
@@ -51,11 +47,14 @@ class PartnerLedgerWithProduct(models.TransientModel):
         ]
 
         cell_text_formate = xlwt.easyxf(
-            "font:name Times New Roman; align:horiz center;", num_format_str="#,##0,00"
+            "font:name Times New Roman; align:horiz center;",
+            num_format_str="#,##0,00"
         )
 
         header = xlwt.easyxf(
-            "font:bold True;border:left thin,right thin,top thin, bottom thin;align:horiz center;pattern: pattern solid, pattern_fore_colour gray25;"
+            "font:bold True;border:left thin,right thin,top thin, bottom thin;"
+            "align:horiz center;pattern: pattern solid, "
+            "pattern_fore_colour gray25;"
         )
 
         sheet.row(0).height = 265 * 2
@@ -229,7 +228,7 @@ class PartnerLedgerWithProduct(models.TransientModel):
 
                                 if move_line.operating_unit_id in operating_unit_list:
 
-                                    if move_line.matching_number == False:
+                                    if move_line.matching_number is False:
 
                                         if move.invoice_date:
                                             ledger_date = move.invoice_date

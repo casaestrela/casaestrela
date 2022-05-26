@@ -1,5 +1,4 @@
-from odoo import _, api, exceptions, fields, models
-from odoo.exceptions import UserError
+from odoo import fields, models
 
 
 class POSPayment(models.Model):

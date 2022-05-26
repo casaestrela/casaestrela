@@ -7,7 +7,6 @@ from odoo.exceptions import Warning
 from odoo.tools import (
     DEFAULT_SERVER_DATE_FORMAT,
     DEFAULT_SERVER_DATETIME_FORMAT,
-    pycompat,
 )
 from odoo.tools.mimetypes import guess_mimetype
 
@@ -45,7 +44,7 @@ class UpdateProductPriceList(models.TransientModel):
 
     def update_product_pricelist(self):
         if not self.import_file_data:
-            raise Warning("Please select file.")
+            raise Warning(_("Please select file."))
         p, ext = os.path.splitext(self.file_name)
         if ext[1:] not in ["xls", "xlsx"]:
             raise Warning(
@@ -75,7 +74,8 @@ class UpdateProductPriceList(models.TransientModel):
 
         result = []
         if handler:
-            result = getattr(self, "_read_" + file_extension)(options, import_file)
+            result = getattr(self, "_read_" + file_extension)(options,
+                                                              import_file)
 
         if not result and self.file_name:
             p, ext = os.path.splitext(self.file_name)
@@ -84,11 +84,13 @@ class UpdateProductPriceList(models.TransientModel):
         if not result and req:
             raise Warning(
                 _(
-                    'Unable to load "{extension}" file: requires Python module "{modname}"'
+                    'Unable to load "{extension}" file: requires Python '
+                    'module "{modname}" '
                 ).format(extension=file_extension, modname=req)
             )
 
-        """ We have count first row as header row.First column will be internal reference and other will be price."""
+        """ We have count first row as header row.First column will be internal 
+            reference and other will be price."""
         pricelist_update_log = self.env["pricelist.process.log"]
         pricelist_update_log_details = self.env["pricelist.process.detail.log"]
         pricelist_item = self.env["product.pricelist.item"]
@@ -198,7 +200,8 @@ class UpdateProductPriceList(models.TransientModel):
                 elif cell.ctype is xlrd.XL_CELL_ERROR:
                     raise ValueError(
                         _(
-                            "Invalid cell value at row %(row)s, column %(col)s: %(cell_value)s"
+                            "Invalid cell value at row %(row)s, "
+                            "column %(col)s: %(cell_value)s"
                         )
                         % {
                             "row": rowx,

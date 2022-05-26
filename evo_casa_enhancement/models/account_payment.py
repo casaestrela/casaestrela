@@ -1,6 +1,6 @@
 from datetime import date
 
-from odoo import _, api, fields, models
+from odoo import _, fields, models
 from odoo.exceptions import UserError
 
 
@@ -13,7 +13,7 @@ class Payment(models.Model):
         allow_back_date = self.env.user.has_group(
             "evo_casa_enhancement.group_back_date_transaction"
         )
-        if allow_back_date == False:
+        if allow_back_date is False:
             if self.date < date.today():
                 raise UserError(_("You Can Not Allow Back Dated Transactions"))
 
@@ -48,7 +48,7 @@ class Payment(models.Model):
                     credit_total += credit.amount
             balance = credit_total - debit_total
             if self.amount > balance:
-                if self.force_transfer == False:
+                if self.force_transfer is False:
                     wizard_id = (
                         self.env["negative.balance.wizard"]
                         .sudo()

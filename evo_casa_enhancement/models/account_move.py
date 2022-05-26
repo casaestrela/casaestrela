@@ -1,5 +1,4 @@
-from odoo import _, api, exceptions, fields, models
-from odoo.exceptions import UserError
+from odoo import _, api, fields, models
 
 
 class AccountMove(models.Model):
@@ -77,7 +76,7 @@ class AccountMove(models.Model):
             "res_model": "account.move",
         }
         action.update(
-            {"view_mode": "form", "res_id": move_ids.id,}
+            {"view_mode": "form", "res_id": move_ids.id}
         )
         return action
 
@@ -114,7 +113,8 @@ class AccountMoveLine(models.Model):
         groups="base.group_user",
     )
     margin_percent = fields.Float(
-        "Margin (%)", compute="_compute_margin", store=True, groups="base.group_user"
+        "Margin (%)", compute="_compute_margin", store=True,
+        groups="base.group_user"
     )
     discount_reason = fields.Many2one("reason.master", string="Discount Reason")
     discount_amount = fields.Float("Discount Amount")
