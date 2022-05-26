@@ -1,4 +1,4 @@
-from odoo import _, api, exceptions, fields, models
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -41,18 +41,16 @@ class FundTransferMaster(models.Model):
                     account_id_list.append(rec.id)
         return [("id", "in", account_id_list)]
 
-    # def get_operating_unit_ids(self):
-    #     company_id = self.env.company
-    #     user_op_unit_id = self.env["res.users"].operating_unit_default_get(self.env.uid)
-    #     operating_unit_ids = self.env['operating.unit'].sudo().search([('id', '!=', user_op_unit_id.id),('company_id', '=', company_id.id)])
-    #     print("operating_unit_ids--------------", operating_unit_ids)
-    #     operating_unit_id_list = []
-    #     if operating_unit_ids:
-    #         for rec in operating_unit_ids:
-    #             if rec.id not in operating_unit_id_list:
-    #                 operating_unit_id_list.append(rec.id)
-    #     print("operating_unit_id_list---------------", operating_unit_id_list)
-    #     return [('id', 'in', operating_unit_id_list)]
+    # def get_operating_unit_ids(self): company_id = self.env.company
+    # user_op_unit_id = self.env["res.users"].operating_unit_default_get(
+    # self.env.uid) operating_unit_ids = self.env['operating.unit'].sudo(
+    # ).search([('id', '!=', user_op_unit_id.id),('company_id', '=',
+    # company_id.id)]) print("operating_unit_ids--------------",
+    # operating_unit_ids) operating_unit_id_list = [] if operating_unit_ids:
+    # for rec in operating_unit_ids: if rec.id not in operating_unit_id_list:
+    # operating_unit_id_list.append(rec.id) print(
+    # "operating_unit_id_list---------------", operating_unit_id_list) return
+    # [('id', 'in', operating_unit_id_list)]
 
     def _get_default_jouranl(self):
         mis_journal_id = self.env["account.journal"].search(
@@ -70,7 +68,10 @@ class FundTransferMaster(models.Model):
         default=_get_default_jouranl,
     )
     company_id = fields.Many2one(
-        "res.company", store=True, readonly=True, default=lambda self: self.env.company
+        "res.company",
+        store=True,
+        readonly=True,
+        default=lambda self: self.env.company
     )
     move_id = fields.Many2one(
         "account.move",
@@ -86,7 +87,9 @@ class FundTransferMaster(models.Model):
             self.env["res.users"].operating_unit_default_get(self.env.uid)
         ),
     )
-    to_operating_unit_id = fields.Many2one("operating.unit", string="To Operating Unit")
+    to_operating_unit_id = fields.Many2one(
+        "operating.unit",
+        string="To Operating Unit")
     from_account_id = fields.Many2one(
         "account.account",
         string="From Account",
@@ -114,7 +117,9 @@ class FundTransferMaster(models.Model):
         tracking=True,
     )
     payment_type_selection = fields.Selection(
-        selection=[("cash", "Cash"), ("dd_cheque", "Cheque/DD"), ("bank", "Bank")],
+        selection=[("cash", "Cash"),
+                   ("dd_cheque", "Cheque/DD"),
+                   ("bank", "Bank")],
         string="Payment Option",
     )
     dd_cheque_no = fields.Char(string="DD/Cheque no.", copy=False)
@@ -220,7 +225,7 @@ class FundTransferMaster(models.Model):
             "res_model": "reject.reason",
             "view_mode": "form",
             "target": "new",
-            "context": {"default_transfer_id": self.id,},
+            "context": {"default_transfer_id": self.id},
         }
 
     @api.onchange("to_account_id")
@@ -264,5 +269,5 @@ class RejectReasonWizard(models.TransientModel):
             "reject_date": fields.Date.context_today(self),
             "reject_reason": self.reject_reason,
         }
-        reject_if = self.env["fund.transfer.reject.reason"].create(reject_val)
+        self.env["fund.transfer.reject.reason"].create(reject_val)
         self.transfer_id.write({"state": "draft", "is_reject_line": True})
