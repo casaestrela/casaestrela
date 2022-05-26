@@ -6,7 +6,8 @@ class AccountMove(models.Model):
 
     # operating_unit_id = fields.Many2one('operating.unit','Operating Unit')
     origin = fields.Char("Source Origin")
-    pos_session_id = fields.Many2one("pos.session", string="POS Session", readonly=1)
+    pos_session_id = fields.Many2one("pos.session", string="POS Session",
+                                     readonly=1)
 
     @api.model_create_multi
     def create(self, values):
