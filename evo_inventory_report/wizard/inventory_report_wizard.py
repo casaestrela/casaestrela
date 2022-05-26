@@ -1,9 +1,5 @@
-from datetime import datetime, timedelta
-
-from dateutil.relativedelta import relativedelta
 
 from odoo import _, fields, models
-from odoo.exceptions import Warning
 
 
 class InventoryValuationReportWizard(models.TransientModel):
@@ -126,7 +122,7 @@ class InventoryValuationReportWizard(models.TransientModel):
                     - report.sales
                     + report.adjustment
                 )
-            valuation_id = (
+            (
                 self.env["stock.valuation.layer"]
                 .sudo()
                 .search(
