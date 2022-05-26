@@ -1,5 +1,4 @@
-from odoo import SUPERUSER_ID, _, api, fields, models
-from odoo.exceptions import UserError
+from odoo import api, fields, models
 
 
 class StockPicking(models.Model):
@@ -10,7 +9,7 @@ class StockPicking(models.Model):
         readonly=False,
         string="Allow Operating Unit",
         store=True,
-        compute="compute_allow_operating_units",
+        compute="_compute_allow_operating_units",
     )
     location_id = fields.Many2one(
         "stock.location",
@@ -71,7 +70,7 @@ class StockPicking(models.Model):
     #             rec.allow_operating_unit_ids = [(4,unit_id.id,0)]
 
     @api.depends("picking_type_id", "location_dest_id")
-    def compute_allow_operating_units(self):
+    def _compute_allow_operating_units(self):
         warehouse_pool = self.env["stock.warehouse"]
         for rec in self:
             # rec.allow_operating_unit_ids = []
