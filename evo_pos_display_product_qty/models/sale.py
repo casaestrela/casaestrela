@@ -5,11 +5,11 @@ class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
     stock_location_qty = fields.Float(
-        "Stock Location Qty", store=True, compute="compute_stock_location_qty"
+        "Stock Location Qty", store=True, compute="_compute_stock_location_qty"
     )
 
     @api.depends("product_id")
-    def compute_stock_location_qty(self):
+    def _compute_stock_location_qty(self):
         for rec in self:
             location_id = (
                 self.env["stock.location"]
@@ -28,5 +28,6 @@ class SaleOrderLine(models.Model):
                 )
             )
             rec.stock_location_qty = rec.product_id.with_context(
-                {"location": location_id.id, "company_id": self.env.user.company_id.id}
+                {"location": location_id.id,
+                 "company_id": self.env.user.company_id.id}
             ).qty_available
