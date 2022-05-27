@@ -4,7 +4,6 @@ from datetime import timedelta
 from io import BytesIO
 
 from odoo import fields, models
-from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 
 _logger = logging.getLogger(__name__)
 
