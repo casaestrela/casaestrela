@@ -37,7 +37,9 @@ class AccountBudgetPost(models.Model):
         "Accounts",
         domain=[("deprecated", "=", False)],
     )
-    budget_line = fields.One2many("budget.lines", "general_budget_id", "Budget Lines")
+    budget_line = fields.One2many(
+        "budget.lines", "general_budget_id", "Budget Lines"
+    )
     company_id = fields.Many2one(
         "res.company",
         "Company",
@@ -54,7 +56,9 @@ class AccountBudgetPost(models.Model):
         else:
             account_ids = self.account_ids
         if not account_ids:
-            raise ValidationError(_("The budget must have at least one account."))
+            raise ValidationError(
+                _("The budget must have at least one account.")
+            )
 
     @api.model
     def create(self, vals):
@@ -153,9 +157,12 @@ class BudgetLines(models.Model):
         compute="_compute_practical_amount", string="Practical Amount", digits=0
     )
     theoretical_amount = fields.Float(
-        compute="_compute_theoretical_amount", string="Theoretical Amount", digits=0
+        compute="_compute_theoretical_amount",
+        string="Theoretical Amount",
+        digits=0
     )
-    percentage = fields.Float(compute="_compute_percentage", string="Achievement")
+    percentage = fields.Float(compute="_compute_percentage",
+                              string="Achievement")
     company_id = fields.Many2one(
         related="budget_id.company_id",
         comodel_name="res.company",
