@@ -117,7 +117,11 @@ class TestSaleOperatingUnit(common.TransactionCase):
             }
         )
         self.sale_line_model.with_user(uid).create(
-            {"order_id": sale.id, "product_id": product.id, "name": "Sale Order Line"}
+            {
+                "order_id": sale.id,
+                "product_id": product.id,
+                "name": "Sale Order Line"
+            }
         )
         return sale
 
