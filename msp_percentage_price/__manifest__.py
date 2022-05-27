@@ -3,7 +3,7 @@
     "version": "14.0.1.0.0",
     "category": "Sales/Sales",
     "summary": "MSP Percentage & MSP Price",
-    "depends": ["sale_management",],
+    "depends": ["sale_management"],
     "data": [
         "views/product_category.xml",
         "views/product.xml",

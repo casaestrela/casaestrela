@@ -5,10 +5,10 @@ class AccountMoveLine(models.Model):
     _inherit = "account.move.line"
 
     msp_percentage = fields.Float("MSP Percentage")
-    msp_subtotal = fields.Float("MSP Subtotal", compute="get_msp_subtotal")
+    msp_subtotal = fields.Float("MSP Subtotal", compute="_get_msp_subtotal")
 
     @api.depends("msp_percentage", "price_subtotal", "price_total")
-    def get_msp_subtotal(self):
+    def _get_msp_subtotal(self):
         for record in self:
             # record.msp_subtotal = record.price_subtotal - ((record.price_subtotal * record.msp_percentage) / 100)
             record.msp_subtotal = record.price_total - (
