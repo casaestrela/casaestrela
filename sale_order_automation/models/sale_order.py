@@ -1,11 +1,11 @@
-from odoo import api, exceptions, fields, models
+from odoo import models
 
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     def action_confirm(self):
-        imediate_obj = self.env["stock.immediate.transfer"]
+        # imediate_obj = self.env["stock.immediate.transfer"]
         res = super(SaleOrder, self).action_confirm()
         for order in self:
 

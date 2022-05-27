@@ -5,17 +5,20 @@
     "author": "Craftsync Technologies",
     "category": "Sales",
     "maintainer": "Craftsync Technologies",
-    "summary": """Enable auto sale workflow with sale order confirmation. Include operations like Auto Create Invoice, Auto Validate Invoice and Auto Transfer Delivery Order.""",
+    "summary": """Enable auto sale workflow with sale order confirmation. 
+    Include operations like Auto Create Invoice, Auto Validate Invoice and Auto 
+    Transfer Delivery Order.""",
     "description": """
 
-        You can directly create invoice and set done to delivery order by single click
+        You can directly create invoice and 
+        set done to delivery order by single click
 
     """,
     "website": "https://www.craftsync.com/",
     "license": "LGPL-3",
     "support": "info@craftsync.com",
     "depends": ["sale_management", "stock"],
-    "data": ["views/stock_warehouse.xml",],
+    "data": ["views/stock_warehouse.xml"],
     "installable": True,
     "application": True,
     "auto_install": False,
