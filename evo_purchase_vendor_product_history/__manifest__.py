@@ -2,10 +2,10 @@
     "name": "Evo Purchase Vendor Product History",
     "summary": """Purchase Vendor Product History For Odoo 14""",
     "description": """Odoo 14.0 Purchase Vendor Product History""",
-    "author": "",
-    "website": "",
+    "author": "Evozard",
+    "website": "www.evozard.com",
     "category": "purchase",
-    "version": "1.0",
+    "version": "14.0.0.1",
     "depends": ["purchase"],
     "data": [
         "security/ir.model.access.csv",

@@ -1,4 +1,4 @@
-from odoo import api, fields, models
+from odoo import models
 
 
 class PurchaseOrderLine(models.Model):
@@ -8,7 +8,8 @@ class PurchaseOrderLine(models.Model):
         values = []
         vendor_id = self.order_id.partner_id
         vendor_order = self.env["purchase.order"].search(
-            [("partner_id", "=", vendor_id.id), ("state", "in", ("purchase", "done"))]
+            [("partner_id", "=", vendor_id.id),
+             ("state", "in", ("purchase", "done"))]
         )
         for order in vendor_order:
             for line in order.order_line:
@@ -28,7 +29,8 @@ class PurchaseOrderLine(models.Model):
                         )
                     )
         history_id = self.env["product.purchase.order.history"].create(
-            {"product_id": self.product_id.id, "product_purchase_history": values}
+            {"product_id": self.product_id.id,
+             "product_purchase_history": values}
         )
 
         return {
