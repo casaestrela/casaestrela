@@ -35,7 +35,8 @@ def test_pre_init_hook(cr):
     for menu in menu_item:
         if menu.name == "Contacts":
             img_path = get_module_resource(
-                "code_backend_theme", "static", "src", "img", "icons", "Contacts.png"
+                "code_backend_theme", "static", "src", "img", "icons",
+                "Contacts.png"
             )
             menu.write({"web_icon_data": base64.b64encode(open(img_path, "rb").read())})
         if menu.name == "Link Tracker":
@@ -50,32 +51,38 @@ def test_pre_init_hook(cr):
             menu.write({"web_icon_data": base64.b64encode(open(img_path, "rb").read())})
         if menu.name == "Dashboards":
             img_path = get_module_resource(
-                "code_backend_theme", "static", "src", "img", "icons", "Dashboards.png"
+                "code_backend_theme", "static", "src", "img", "icons",
+                "Dashboards.png"
             )
             menu.write({"web_icon_data": base64.b64encode(open(img_path, "rb").read())})
         if menu.name == "Sales":
             img_path = get_module_resource(
-                "code_backend_theme", "static", "src", "img", "icons", "Sales.png"
+                "code_backend_theme", "static", "src", "img", "icons",
+                "Sales.png"
             )
             menu.write({"web_icon_data": base64.b64encode(open(img_path, "rb").read())})
         if menu.name == "Invoicing":
             img_path = get_module_resource(
-                "code_backend_theme", "static", "src", "img", "icons", "Invoicing.png"
+                "code_backend_theme", "static", "src", "img", "icons",
+                "Invoicing.png "
             )
             menu.write({"web_icon_data": base64.b64encode(open(img_path, "rb").read())})
         if menu.name == "Inventory":
             img_path = get_module_resource(
-                "code_backend_theme", "static", "src", "img", "icons", "Inventory.png"
+                "code_backend_theme", "static", "src", "img", "icons",
+                "Inventory.png"
             )
             menu.write({"web_icon_data": base64.b64encode(open(img_path, "rb").read())})
         if menu.name == "Purchase":
             img_path = get_module_resource(
-                "code_backend_theme", "static", "src", "img", "icons", "Purchase.png"
+                "code_backend_theme", "static", "src", "img", "icons",
+                "Purchase.png"
             )
             menu.write({"web_icon_data": base64.b64encode(open(img_path, "rb").read())})
         if menu.name == "Calendar":
             img_path = get_module_resource(
-                "code_backend_theme", "static", "src", "img", "icons", "Calendar.png"
+                "code_backend_theme", "static", "src", "img", "icons",
+                "Calendar.png"
             )
             menu.write({"web_icon_data": base64.b64encode(open(img_path, "rb").read())})
         if menu.name == "CRM":

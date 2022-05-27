@@ -21,7 +21,8 @@
 
 {
     "name": "Code Backend Theme V14",
-    "description": """Minimalist and elegant backend theme for Odoo 14, Backend Theme, Theme""",
+    "description": """Minimalist and elegant backend theme for Odoo 14, 
+                      Backend Theme, Theme""",
     "summary": "Code Backend Theme V14 is an attractive theme for backend",
     "category": "Theme/Backend",
     "version": "14.0.1.1.2",
@@ -30,7 +31,7 @@
     "maintainer": "Cybrosys Techno Solutions",
     "website": "https://www.cybrosys.com",
     "depends": ["base", "web", "mail"],
-    "data": ["assets/assets.xml", "views/icons.xml", "views/layout.xml",],
+    "data": ["assets/assets.xml", "views/icons.xml", "views/layout.xml"],
     "qweb": [
         "static/src/xml/sidebar.xml",
         "static/src/xml/styles.xml",
