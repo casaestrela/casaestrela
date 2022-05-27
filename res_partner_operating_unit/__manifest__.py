@@ -7,6 +7,6 @@
     "category": "Generic",
     "depends": ["operating_unit"],
     "license": "LGPL-3",
-    "data": ["security/ir.model.access.csv", "views/res_partner_view.xml",],
+    "data": ["security/ir.model.access.csv", "views/res_partner_view.xml"],
     "installable": True,
 }
