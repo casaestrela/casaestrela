@@ -13,7 +13,8 @@ class ImportProduct(models.TransientModel):
     product_filename = fields.Char(string="Filename")
 
     def import_product(self):
-        keys = ["sr_no", "prefix", "category_id", "name", "unit", "qty_available"]
+        keys = ["sr_no", "prefix", "category_id", "name", "unit",
+                "qty_available"]
         file_reader = []
 
         csv_data = base64.b64decode(self.product_file)
@@ -133,7 +134,7 @@ class ImportProduct(models.TransientModel):
                             )
                         )
                         inventory_id.action_start()
-                        inventory_line_id = (
+                        (
                             self.env["stock.inventory.line"]
                             .sudo()
                             .create(
