@@ -15,8 +15,10 @@ class SaleOrderQuote(models.Model):
         comodel_name="operating.unit", string="Operating Unit", required=True
     )
     sale_id = fields.Many2one(comodel_name="sale.order", string="Sale")
-    lead_id = fields.Many2one(comodel_name="crm.lead", string="Lead", readonly=True)
-    line_ids = fields.One2many("sale.order.quote.line", "quote_id", string="Products")
+    lead_id = fields.Many2one(
+        comodel_name="crm.lead", string="Lead", readonly=True)
+    line_ids = fields.One2many(
+        "sale.order.quote.line", "quote_id", string="Products")
     state = fields.Selection(
         [("new", "New"), ("sent", "Sent"), ("received", "Received")],
         string="State",

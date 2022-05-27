@@ -9,8 +9,10 @@ class SaleOrderQuoteLine(models.Model):
     _description = "Internal Quote Line"
 
     name = fields.Char(string="Description", required=True)
-    quote_id = fields.Many2one(comodel_name="sale.order.quote", string="Internal Quote")
-    product_id = fields.Many2one(comodel_name="product.product", string="Product")
+    quote_id = fields.Many2one(
+        comodel_name="sale.order.quote", string="Internal Quote")
+    product_id = fields.Many2one(
+        comodel_name="product.product", string="Product")
     qty = fields.Float(string="Quantity")
     uom_id = fields.Many2one(comodel_name="uom.uom", string="Unit of Measure")
     price_unit = fields.Float(string="Unit Price")
