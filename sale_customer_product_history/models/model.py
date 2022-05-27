@@ -19,7 +19,7 @@
 #
 #############################################################################
 
-from odoo import api, fields, models
+from odoo import models
 
 
 class SaleOrderLine(models.Model):
@@ -29,7 +29,8 @@ class SaleOrderLine(models.Model):
         values = []
         customer_id = self.order_id.partner_id
         customer_order = self.env["sale.order"].search(
-            [("partner_id", "=", customer_id.id), ("state", "in", ("sale", "done"))]
+            [("partner_id", "=", customer_id.id),
+             ("state", "in", ("sale", "done"))]
         )
         for order in customer_order:
             for line in order.order_line:

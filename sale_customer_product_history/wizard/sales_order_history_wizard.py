@@ -19,7 +19,7 @@
 #
 #############################################################################
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class ProductSaleHistoryWizard(models.TransientModel):
