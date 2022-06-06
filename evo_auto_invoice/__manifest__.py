@@ -5,7 +5,8 @@
     "author": "Evozard",
     "website": "www.evozard.com",
     "category": "sale",
-    "version": "14.0.0.1",
+    "license": "LGPL-3",
+    "version": "14.0.0.0.1",
     "depends": ["sale_management", "account"],
     "data": [
         "security/ir.model.access.csv",
@@ -13,8 +14,6 @@
         "views/sale_order_view.xml",
         "views/account_payment_view.xml",
     ],
-    "qweb": [],
-    "images": [],
     "auto_install": False,
     "installable": True,
     "application": True,
