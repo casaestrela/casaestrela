@@ -97,7 +97,7 @@ class AccountMoveLine(models.Model):
         string="Analytic Account",
         default=_default_analytic_account_id,
         index=True,
-        compute="_compute_analytic_account",
+        compute="_compute_analytic_account_id",
         store=True,
         readonly=False,
         check_company=True,
