@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_move_form_inherit_casa" model="ir.ui.view">
+        <field name="name">account.move.form.inherit.casa</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='button_cancel']" position="after">
+                <field name='sale_return' invisible='1' />
+                <button
+                    name="action_sale_return"
+                    string="Sales Return"
+                    type="object"
+                    class="oe_highlight"
+                    attrs="{'invisible': ['|',('sale_return', '=', True),('move_type', '=','out_refund')]}"
+                />
+            </xpath>
+            <xpath expr="//field[@name='payment_reference']" position="after">
+                <field name='sale_order_id' invisible='1' />
+            </xpath>
+            <xpath
+                expr="//field[@name='invoice_line_ids']/tree/field[@name='price_unit']"
+                position="after"
+            >
+                <field name='sale_order_id' invisible='1' />
+                <field name='sale_order_line_id' invisible='1' />
+                <field name='cost_price' readonly='1' optional="hide" />
+                <field name='discount_amount' readonly='1' optional="show" />
+                <field name='discount_reason' readonly='1' optional="show" />
+                <field name='margin' readonly='1' optional="hide" />
+                <field name='margin_percent' readonly='1' optional="hide" />
+            </xpath>
+            <xpath
+                expr="//field[@name='invoice_line_ids']/tree/field[@name='discount']"
+                position="replace"
+            >
+                <field name="discount" string="Disc.%" invisible='1' />
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.ui.menu" id="account.menu_finance_reports">
+        <field
+            name="groups_id"
+            eval="[(6,0,[ref('account.group_account_readonly')])]"
+        />
+    </record>
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="view_pos_form_inherited" model="ir.ui.view">
+            <field name="model">pos.order</field>
+            <field name="name">inherit.pos.order.form</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_pos_form" />
+            <field name="arch" type="xml">
+                <xpath
+                    expr="//sheet/group/field[@name='fiscal_position_id']"
+                    position="after"
+                >
+                    <field name="operating_unit_id" readonly='1' />
+                </xpath>
+            </field>
+        </record>
+        <record id="view_pos_order_tree_inherited" model="ir.ui.view">
+            <field name="model">pos.order</field>
+            <field name="name">inherit.pos.order.tree</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_order_tree" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_total']" position="before">
+                    <field name="operating_unit_id" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="sale_order_form_view_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.view.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']"
+                position="after"
+            >
+                <field name="stock_location_qty" />
+            </xpath>
+        </field>
+    </record>
+    <record id="product_template_kanban_view_inherit" model="ir.ui.view">
+        <field name="name">Product.template.product.kanban.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_kanban_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='product_lst_price']" position="after">
+                <div t-if="record.type.raw_value == 'product'">Operating Unit: <field
+                        name="stock_location_qty"
+                    /></div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

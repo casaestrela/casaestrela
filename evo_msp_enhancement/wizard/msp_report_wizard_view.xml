@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="view_msp_report_wizard" model="ir.ui.view">
+            <field name="name">msp.report.wizard.form</field>
+            <field name="model">msp.report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Resumo Report">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="start_date" required='1' />
+                            </group>
+                            <group>
+                                <field name="end_date" required='1' />
+                                <field name="operating_unit_id" required='1' />
+                            </group>
+                        </group>
+                        <footer>
+                            <button
+                                string='Generate Report'
+                                name="action_generate_report"
+                                type="object"
+                                class="btn-primary"
+                            />
+                            <button
+                                string="Cancel"
+                                class="btn-default"
+                                special="cancel"
+                            />
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="action_msp_report_wizard" model="ir.actions.act_window">
+            <field name="name">Resumo Reports</field>
+            <field name="res_model">msp.report.wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_msp_report_wizard" />
+            <field name="target">new</field>
+        </record>
+        <menuitem
+            id="msp_report_menu"
+            name="Resumo Report"
+            action="evo_msp_enhancement.action_msp_report_wizard"
+            parent="account.menu_finance_reports"
+            sequence="15"
+        />
+    </data>
+</odoo>

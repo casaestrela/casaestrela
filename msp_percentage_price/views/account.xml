@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="account_move_form_view_inherit_msp" model="ir.ui.view">
+        <field name="name">account.move.form.view.inherit.msp</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='invoice_line_ids']/tree/field[@name='price_subtotal']"
+                position="before"
+            >
+                <field name="msp_percentage" invisible='1' />
+                <field name="msp_subtotal" invisible='1' />
+            </xpath>
+        </field>
+    </record>
+</odoo>

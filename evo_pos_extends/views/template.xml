@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="point_of_sale_assets_inherit"
+        inherit_id="point_of_sale.assets"
+        name="point_of_sale assets_inherit"
+    >
+        <xpath expr="." position="inside">
+            <script
+                type="text/javascript"
+                src="/evo_pos_extends/static/src/js/models.js"
+            />
+            <script
+                type="text/javascript"
+                src="/evo_pos_extends/static/src/js/customer_filter_pos.js"
+            />
+        </xpath>
+    </template>
+</odoo>

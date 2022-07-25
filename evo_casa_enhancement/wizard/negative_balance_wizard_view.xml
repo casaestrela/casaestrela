@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="view_negative_balance_wizard" model="ir.ui.view">
+            <field name="name">negative.balance.wizard.form</field>
+            <field name="model">negative.balance.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Inventory Report">
+                    <sheet>
+                        <field name="account_payment_id" invisible='1' />
+                        <p
+                        >Transaction Amount Not Enough.Are You Sure Want to Process Transaction? </p>
+                        <footer>
+                            <button
+                                string='Yes'
+                                name="action_confirm_transaction"
+                                type="object"
+                                class="btn-primary"
+                            />
+                            <button string="No" class="btn-default" special="cancel" />
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record
+            id="action_view_negative_balance_wizard_wizard"
+            model="ir.actions.act_window"
+        >
+            <field name="name">Negative Balance</field>
+            <field name="res_model">negative.balance.wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_negative_balance_wizard" />
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

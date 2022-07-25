@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_inventory_valuation_report_tree" model="ir.ui.view">
+        <field name="name">inventory.valuation.report.tree</field>
+        <field name="model">inventory.valuation.report</field>
+        <field name="arch" type="xml">
+            <tree string='Inventory Report' create="false">
+                <field name="default_code" />
+                <field name="name" />
+                <field name="category_id" />
+                <field name="cost_price" groups="account.group_account_user" />
+                <field name="beginning" />
+                <field name="internal" />
+                <field name="received" />
+                <field name="sales" />
+                <field name="adjustment" />
+                <field name="ending" />
+                <field
+                    name="valuation"
+                    sum="Total Valuation"
+                    groups="account.group_account_user"
+                />
+            </tree>
+        </field>
+    </record>
+    <record id="action_inventory_valuation_report" model="ir.actions.act_window">
+        <field name="name">Inventory Reports</field>
+        <field name="res_model">inventory.valuation.report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree</field>
+    </record>
+</odoo>
