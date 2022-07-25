@@ -6,43 +6,105 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-        			<button name="action_submitted" string="Submit" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
-        			<button name="action_verified" string="Verified" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'submitted')]}"/>
-        			<button name="action_validate" string="Validate" type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'verified')]}"/>
-        			<button name="action_reset_to_draft" string="Reject" type="object" attrs="{'invisible': [('state', '!=', 'submitted')]}"/>
-        			<field name="state" widget="statusbar" statusbar_visible="draft,submitted,posted"/>
-				</header>
-            	<sheet>
+                    <button
+                        name="action_submitted"
+                        string="Submit"
+                        type="object"
+                        class="oe_highlight"
+                        attrs="{'invisible': [('state', '!=', 'draft')]}"
+                    />
+                    <button
+                        name="action_verified"
+                        string="Verified"
+                        type="object"
+                        class="oe_highlight"
+                        attrs="{'invisible': [('state', '!=', 'submitted')]}"
+                    />
+                    <button
+                        name="action_validate"
+                        string="Validate"
+                        type="object"
+                        class="oe_highlight"
+                        attrs="{'invisible': [('state', '!=', 'verified')]}"
+                    />
+                    <button
+                        name="action_reset_to_draft"
+                        string="Reject"
+                        type="object"
+                        attrs="{'invisible': [('state', '!=', 'submitted')]}"
+                    />
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,submitted,posted"
+                    />
+                </header>
+                <sheet>
                     <div class="oe_title">
-                        <label for="name" class="oe_edit_only"/>
-                        <h1><field name="name" required="1" attrs="{'readonly': [('state', '!=', 'draft')]}"/></h1>
+                        <label for="name" class="oe_edit_only" />
+                        <h1>
+                            <field
+                                name="name"
+                                required="1"
+                                attrs="{'readonly': [('state', '!=', 'draft')]}"
+                            />
+                        </h1>
                     </div>
-            		<group>
-		                <group>
-		                    <field name="company_id" readonly="1"/>
-		                    <field name="journal_id" readonly="1"/>
-                            <field name="move_id" attrs="{'invisible': [('state', '!=', 'posted')]}"/>
-		                </group>
-                        <group>
-                            <field name="verified_by" readonly="1"/>
-                            <field name="validate_by" readonly="1"/>
-                        </group>
-	                </group>
                     <group>
                         <group>
-                            <field name="is_reject_line" invisible="1"/>
-                            <field name="operating_unit_id" readonly="1"/>
-                            <field name="from_account_id" readonly="1" required="1"/>
-                            <field name="payment_type_selection" required="1" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
-                            <field name="dd_cheque_no" attrs="{'required':[('payment_type_selection','=','dd_cheque')],'invisible':[('payment_type_selection','!=','dd_cheque')], 'readonly': [('state', '!=', 'draft')]}"/>
-							<field name="dd_cheque_date" attrs="{'required':[('payment_type_selection','=','dd_cheque')],'invisible':[('payment_type_selection','!=','dd_cheque')], 'readonly': [('state', '!=', 'draft')]}"/>
-                            <field name="date" required="1" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
-		                </group>
+                            <field name="company_id" readonly="1" />
+                            <field name="journal_id" readonly="1" />
+                            <field
+                                name="move_id"
+                                attrs="{'invisible': [('state', '!=', 'posted')]}"
+                            />
+                        </group>
                         <group>
-                            <field name="to_operating_unit_id" force_save="1" readonly="1" required="1"/>
-                            <field name="to_account_id" required="1" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
-                            <field name="subtotal" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
-		                </group>
+                            <field name="verified_by" readonly="1" />
+                            <field name="validate_by" readonly="1" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="is_reject_line" invisible="1" />
+                            <field name="operating_unit_id" readonly="1" />
+                            <field name="from_account_id" readonly="1" required="1" />
+                            <field
+                                name="payment_type_selection"
+                                required="1"
+                                attrs="{'readonly': [('state', '!=', 'draft')]}"
+                            />
+                            <field
+                                name="dd_cheque_no"
+                                attrs="{'required':[('payment_type_selection','=','dd_cheque')],'invisible':[('payment_type_selection','!=','dd_cheque')], 'readonly': [('state', '!=', 'draft')]}"
+                            />
+                            <field
+                                name="dd_cheque_date"
+                                attrs="{'required':[('payment_type_selection','=','dd_cheque')],'invisible':[('payment_type_selection','!=','dd_cheque')], 'readonly': [('state', '!=', 'draft')]}"
+                            />
+                            <field
+                                name="date"
+                                required="1"
+                                attrs="{'readonly': [('state', '!=', 'draft')]}"
+                            />
+                        </group>
+                        <group>
+                            <field
+                                name="to_operating_unit_id"
+                                force_save="1"
+                                readonly="1"
+                                required="1"
+                            />
+                            <field
+                                name="to_account_id"
+                                required="1"
+                                attrs="{'readonly': [('state', '!=', 'draft')]}"
+                            />
+                            <field
+                                name="subtotal"
+                                attrs="{'readonly': [('state', '!=', 'draft')]}"
+                            />
+                        </group>
                     </group>
                     <notebook attrs="{'invisible': [('is_reject_line', '=', False)]}">
                         <page string="Reject History" name="reject_lines">
@@ -74,42 +136,40 @@
             </tree>
         </field>
     </record>
-
     <record id="action_fund_transfer_master" model="ir.actions.act_window">
         <field name="name">Fund Transfer</field>
         <field name="res_model">fund.transfer.master</field>
         <field name="view_mode">tree,form</field>
     </record>
-
+    <menuitem id="menu_fund_transfer" name="Fund Transfer" sequence="3" />
     <menuitem
-        id="menu_fund_transfer"
         name="Fund Transfer"
-        sequence="3"/>
-
-    <menuitem
-    	name="Fund Transfer"
         action="action_fund_transfer_master"
         id="menu_fund_transfer_master"
         parent="menu_fund_transfer"
-        sequence='10'/>
-
+        sequence='10'
+    />
     <record id="form_reject_reason" model="ir.ui.view">
-            <field name="name">form.reject.reason</field>
-            <field name="model">reject.reason</field>
-            <field name="arch" type="xml">
-                <form>
+        <field name="name">form.reject.reason</field>
+        <field name="model">reject.reason</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
                     <group>
-                        <group>
-                            <field name="transfer_id" invisible="1"/>
-                            <field name="reject_reason" required="1"/>
-                        </group>
+                        <field name="transfer_id" invisible="1" />
+                        <field name="reject_reason" required="1" />
                     </group>
-                    <footer>
-                        <button string="Reject" name="reject_transfer" type="object" class="btn-primary"/>
-                        <button string="Cancel" class="oe_link" special="cancel"/>
-                    </footer>
-                </form>
-            </field>
-        </record>
-
+                </group>
+                <footer>
+                    <button
+                        string="Reject"
+                        name="reject_transfer"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
 </odoo>

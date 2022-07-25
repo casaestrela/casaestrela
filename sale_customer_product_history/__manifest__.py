@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #############################################################################
 #
 #    Cybrosys Technologies Pvt. Ltd.
@@ -21,23 +20,23 @@
 #############################################################################
 
 {
-    'name': "Sales History Of Products",
-    'version': '14.0.1.0.0',
-    'summary': """Sales history of products from Sales Order Line""",
-    'description': """Sales history of products from Sales Order Line""",
-    'author': "Cybrosys Techno Solutions",
-    'company': "Cybrosys Techno Solutions",
-    'maintainer': 'Cybrosys Techno Solutions',
-    'website': "https://www.cybrosys.com",
-    'category': 'Sales/Sales',
-    'depends': ['base', 'sale_management'],
-    'license': 'AGPL-3',
-    'data': [
-        'security/ir.model.access.csv',
-        'wizard/sales_order_history_wizard_view.xml',
-        'views/view.xml',
+    "name": "Sales History Of Products",
+    "version": "14.0.1.0.0",
+    "summary": """Sales history of products from Sales Order Line""",
+    "description": """Sales history of products from Sales Order Line""",
+    "author": "Cybrosys Techno Solutions",
+    "company": "Cybrosys Techno Solutions",
+    "maintainer": "Cybrosys Techno Solutions",
+    "website": "https://www.cybrosys.com",
+    "category": "Sales/Sales",
+    "depends": ["base", "sale_management"],
+    "license": "AGPL-3",
+    "data": [
+        "security/ir.model.access.csv",
+        "wizard/sales_order_history_wizard_view.xml",
+        "views/view.xml",
     ],
-    'images': ['static/description/banner.png'],
-    'installable': True,
-    'auto_install': False,
+    "images": ["static/description/banner.png"],
+    "installable": True,
+    "auto_install": False,
 }

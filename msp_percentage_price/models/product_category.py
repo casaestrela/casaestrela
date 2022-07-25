@@ -1,14 +1,13 @@
-# -*- encoding: utf-8 -*-
-
-from odoo import fields, models, api, _
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
+
 class ProductCategory(models.Model):
-    _inherit = 'product.category'
-    
-    msp_percentage = fields.Float('MSP Percentage')
-    
-    @api.constrains('msp_percentage')
+    _inherit = "product.category"
+
+    msp_percentage = fields.Float("MSP Percentage")
+
+    @api.constrains("msp_percentage")
     def check_msp_percentage(self):
         """ Make sure that MSP percentage is between 0 to 100 """
         for record in self:

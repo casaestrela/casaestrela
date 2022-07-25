@@ -17,9 +17,6 @@
     white-space: nowrap;
 }
 
-
-
-
 .accounts-dashboard-wrap .ct-series-e .ct-slice-pie {
     fill: #7b2138 !important;
 }
@@ -32,16 +29,12 @@
     stroke: #009f9d !important;
 }
 
-
 .accounts-dashboard-wrap h4 {
     padding-left: 20px !important;
     padding-top: 10px !important;
 }
 
-
-
-
-.accounts-dashboard-wrap .users-list>li img {
+.accounts-dashboard-wrap .users-list > li img {
     border-radius: 50%;
     height: auto;
     max-width: 100%;
@@ -54,14 +47,13 @@
     background-color: #dc3545;
 }
 
-.accounts-dashboard-wrap .card-header>.card-tools {
+.accounts-dashboard-wrap .card-header > .card-tools {
     float: right;
-    margin-right: -.625rem;
+    margin-right: -0.625rem;
 }
 
-
 .accounts-dashboard-wrap .card {
-    box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2);
     margin-bottom: 1rem;
 }
 
@@ -148,17 +140,14 @@
     padding-left: 7.5px;
 }
 
-
 .accounts-dashboard-wrap .card-header {
-    background-color:
-        transparent;
-    border-bottom: 1px solid rgba(0, 0, 0, .125);
-    padding: .75rem 1.25rem;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 0.75rem 1.25rem;
     position: relative;
-    border-top-left-radius: .25rem;
-    border-top-right-radius: .25rem;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
 }
-
 
 .accounts-dashboard-wrap .fa:hover {
     -ms-transform: scale(1.5);
@@ -168,9 +157,9 @@
     transform: scale(1.5);
 }
 
-.accounts-dashboard-wrap .card-header>.card-tools {
+.accounts-dashboard-wrap .card-header > .card-tools {
     float: right;
-    margin-right: -.625rem;
+    margin-right: -0.625rem;
 }
 
 .accounts-dashboard-wrap .right {
@@ -181,7 +170,6 @@
     visibility: visible;
 }
 
-
 .accounts-dashboard-wrap .col-6 {
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
@@ -189,7 +177,7 @@
 }
 
 .accounts-dashboard-wrap .fa-cog {
-    content: "\f013"
+    content: "\f013";
 }
 
 .accounts-dashboard-wrap .fa,
@@ -213,8 +201,7 @@
 }
 
 .accounts-dashboard-wrap .info-box .info-box-icon {
-
-    border-radius: .25rem;
+    border-radius: 0.25rem;
     -ms-flex-align: center;
     align-items: center;
     display: -ms-flexbox;
@@ -227,16 +214,14 @@
 }
 
 .accounts-dashboard-wrap .info-box {
-
-
-    box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
-    border-radius: .25rem;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.125), 0 1px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 0.25rem;
     background: #fff;
     display: -ms-flexbox;
     display: flex;
     margin-bottom: 1rem;
     min-height: 80px;
-    padding: .5rem;
+    padding: 0.5rem;
     position: relative;
 }
 
@@ -257,14 +242,12 @@
     border-left-style: none;
 }
 
-
 .accounts-dashboard-wrap .in_graph {
     padding-left: 90px;
     height: auto;
     padding-bottom: 65px;
     text-align: center !important;
 }
-
 
 .accounts-dashboard-wrap .oh_dashboards {
     padding-top: 15px;
@@ -296,15 +279,13 @@ body {
 }
 
 .accounts-dashboard-wrap .dash-header {
-
     margin: 15px 0px 12px 0 !important;
     display: block;
     padding: 7px 25px 7px 0;
     color: #0e1319;
     font-size: 2rem;
     font-weight: 400;
-    background-color:
-        rgba(255, 255, 255, 0.9) !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
     color: #212529;
     padding: 1.5rem;
     border-radius: 3px;
@@ -312,22 +293,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .accounts-dashboard-wrap .dashboard-h1 {
-
     display: block;
     padding: 7px 25px 7px 0;
     color: #0e1319;
     font-size: 2rem;
     font-weight: 400;
-    color:
-
-        #212529;
+    color: #212529;
     float: left;
     margin-bottom: 0;
-
 }
 
 .accounts-dashboard-wrap .card {
@@ -338,8 +314,8 @@ body {
     background-color: #ffffff !important;
     border-radius: 0.25rem !important;
     padding: 0px !important;
-    -webkit-transition: .5s !important;
-    transition: .5s !important;
+    -webkit-transition: 0.5s !important;
+    transition: 0.5s !important;
     display: -ms-flexbox !important;
     display: flex !important;
     -ms-flex-direction: column !important;
@@ -353,7 +329,7 @@ body {
     padding: 0;
 }
 
-.accounts-dashboard-wrap .card-header>.card-tools {
+.accounts-dashboard-wrap .card-header > .card-tools {
     float: right;
     margin-right: 0.375rem;
     margin-top: 5px;
@@ -366,7 +342,7 @@ body {
     padding: 0 0px;
     margin: 0 0px;
     color: #57769c;
-    opacity: .8;
+    opacity: 0.8;
     -webkit-transition: 0.3s linear;
     transition: 0.3s linear;
 }
@@ -499,7 +475,7 @@ body {
     color: #455e7b !important;
 }
 
-.accounts-dashboard-wrap .main-title~div {
+.accounts-dashboard-wrap .main-title ~ div {
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
@@ -523,12 +499,12 @@ body {
     padding: 0 0px;
     margin: 0 0px;
     color: #57769c;
-    opacity: .8;
+    opacity: 0.8;
     -webkit-transition: 0.3s linear;
     transition: 0.3s linear;
 }
 
-.accounts-dashboard-wrap .card-header>.card-tools {
+.accounts-dashboard-wrap .card-header > .card-tools {
     float: right;
     margin-right: 0;
     margin-top: 0px !important;
@@ -587,8 +563,8 @@ body {
 }
 
 .accounts-dashboard-wrap .ct-label {
-    fill: rgba(0, 0, 0, .4);
-    color: rgba(0, 0, 0, .4);
+    fill: rgba(0, 0, 0, 0.4);
+    color: rgba(0, 0, 0, 0.4);
     font-size: 1.1rem !important;
     line-height: 1;
     font-weight: 600;
@@ -615,7 +591,7 @@ body {
             height: 12px;
             position: absolute;
             left: 0;
-            content: '';
+            content: "";
             border: 3px solid transparent;
             border-radius: 2px;
         }
@@ -654,7 +630,6 @@ body {
     width: 595px;
     height: 396px;
     // pointer-events: none;
-
 }
 
 .accounts-dashboard-wrap .canvas-con {
@@ -723,7 +698,7 @@ body {
     display: flex;
     justify-content: center;
     align-content: center;
-    padding: .3rem;
+    padding: 0.3rem;
     background: #843cf7;
     color: #fff;
     border-radius: 10px;
@@ -742,11 +717,9 @@ body {
     display: flex;
     justify-content: center;
     align-content: center;
-    padding: .3rem;
-    background:
-        #843cf7;
-    color:
-        #fff;
+    padding: 0.3rem;
+    background: #843cf7;
+    color: #fff;
     border-radius: 10px;
     width: auto !important;
     font-weight: 600;
@@ -762,18 +735,15 @@ body {
     display: flex;
     justify-content: center;
     align-content: center;
-    padding: .3rem;
-    background:
-        #843cf7;
-    color:
-        #fff;
+    padding: 0.3rem;
+    background: #843cf7;
+    color: #fff;
     border-radius: 10px;
     width: auto !important;
     font-weight: 600;
     margin-bottom: 2rem;
     margin-top: 1rem;
 }
-
 
 .accounts-dashboard-wrap #net_profit_this_months .title {
     float: left;
@@ -783,19 +753,15 @@ body {
     display: flex;
     justify-content: center;
     align-content: center;
-    padding: .3rem;
-    background:
-        #843cf7;
-    color:
-        #fff;
+    padding: 0.3rem;
+    background: #843cf7;
+    color: #fff;
     border-radius: 10px;
     width: auto !important;
     font-weight: 600;
     margin-bottom: 2rem;
     margin-top: 1rem;
 }
-
-
 
 .accounts-dashboard-wrap #col-graph .card {
     height: 366px;
@@ -819,8 +785,7 @@ body {
 }
 
 .accounts-dashboard-wrap #top_10_customers li a {
-    color:
-        #455e7b !important;
+    color: #455e7b !important;
 }
 
 .accounts-dashboard-wrap #top_10_customers_this_month {
@@ -841,8 +806,7 @@ body {
 }
 
 .accounts-dashboard-wrap #top_10_customers_this_month li a {
-    color:
-        #455e7b !important;
+    color: #455e7b !important;
 }
 
 .accounts-dashboard-wrap #top_10_customers_last_month {
@@ -863,8 +827,7 @@ body {
 }
 
 .accounts-dashboard-wrap #top_10_customers_last_month li a {
-    color:
-        #455e7b !important;
+    color: #455e7b !important;
 }
 
 .accounts-dashboard-wrap #current_bank_balance {
@@ -872,7 +835,6 @@ body {
 }
 
 .accounts-dashboard-wrap #current_bank_balance li {
-
     list-style: none;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -883,12 +845,10 @@ body {
     display: flex;
     justify-content: space-between;
     padding-right: 2rem;
-
 }
 
 .accounts-dashboard-wrap #current_bank_balance li a {
-    color:
-        #455e7b !important;
+    color: #455e7b !important;
 }
 
 .accounts-dashboard-wrap #current_cash_balance {
@@ -910,9 +870,7 @@ body {
 
 .accounts-dashboard-wrap #current_cash_balance li a {
     color: #455e7b !important;
-
 }
-
 
 .accounts-dashboard-wrap .custom-h1 {
     font-size: 1em;
@@ -1034,31 +992,39 @@ progress::-moz-progress-bar {
 .accounts-dashboard-wrap #total_customer_invoice_current_month .logo,
 .accounts-dashboard-wrap #total_supplier_invoice_paid_current_month .logo,
 .accounts-dashboard-wrap #total_supplier_invoice_current_month .logo {
-
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
     justify-content: left;
     flex-direction: column-reverse;
     color: #455e7b !important;
-
 }
 
 .accounts-dashboard-wrap #total_customer_invoice_paid .logo span:nth-child(2),
 .accounts-dashboard-wrap #total_customer_invoice .logo span:nth-child(2),
 .accounts-dashboard-wrap #total_supplier_invoice_paid .logo span:nth-child(2),
 .accounts-dashboard-wrap #total_supplier_invoice .logo span:nth-child(2),
-.accounts-dashboard-wrap #total_customer_invoice_paid_current_year .logo span:nth-child(2),
+.accounts-dashboard-wrap
+    #total_customer_invoice_paid_current_year
+    .logo
+    span:nth-child(2),
 .accounts-dashboard-wrap #total_customer_invoice_current_year .logo span:nth-child(2),
-.accounts-dashboard-wrap #total_supplier_invoice_paid_current_year .logo span:nth-child(2),
+.accounts-dashboard-wrap
+    #total_supplier_invoice_paid_current_year
+    .logo
+    span:nth-child(2),
 .accounts-dashboard-wrap #total_supplier_invoice_current_year .logo span:nth-child(2),
-.accounts-dashboard-wrap #total_customer_invoice_paid_current_month .logo span:nth-child(2),
+.accounts-dashboard-wrap
+    #total_customer_invoice_paid_current_month
+    .logo
+    span:nth-child(2),
 .accounts-dashboard-wrap #total_customer_invoice_current_month .logo span:nth-child(2),
-.accounts-dashboard-wrap #total_supplier_invoice_paid_current_month .logo span:nth-child(2),
+.accounts-dashboard-wrap
+    #total_supplier_invoice_paid_current_month
+    .logo
+    span:nth-child(2),
 .accounts-dashboard-wrap #total_supplier_invoice_current_month .logo span:nth-child(2) {
-
     font-weight: 600;
-
 }
 
 .accounts-dashboard-wrap .switch {
@@ -1082,8 +1048,8 @@ progress::-moz-progress-bar {
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
 }
 
 .accounts-dashboard-wrap .slider:before {
@@ -1094,19 +1060,19 @@ progress::-moz-progress-bar {
     left: 4px;
     bottom: 4px;
     background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
 }
 
-.accounts-dashboard-wrap input:checked+.slider {
-    background-color: #2196F3;
+.accounts-dashboard-wrap input:checked + .slider {
+    background-color: #2196f3;
 }
 
-.accounts-dashboard-wrap input:focus+.slider {
-    box-shadow: 0 0 1px #2196F3;
+.accounts-dashboard-wrap input:focus + .slider {
+    box-shadow: 0 0 1px #2196f3;
 }
 
-.accounts-dashboard-wrap input:checked+.slider:before {
+.accounts-dashboard-wrap input:checked + .slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
@@ -1122,43 +1088,32 @@ progress::-moz-progress-bar {
 }
 
 .accounts-dashboard-wrap .btn-primary {
-
-    color: #FFFFFF;
-    background-color: #7C7BAD;
-    border-color: #7C7BAD;
-
+    color: #ffffff;
+    background-color: #7c7bad;
+    border-color: #7c7bad;
 }
 
 .accounts-dashboard-wrap .toggle-on.btn {
-
     padding-right: 18px !important;
     right: 50%;
-
-
 }
 
 .accounts-dashboard-wrap .toggle.btn.btn-default.off {
-
     border: 1px solid #aaa;
 
     background: #fff;
     font-weight: 600 !important;
-
 }
 
 .accounts-dashboard-wrap .toggle-off.btn {
-
     padding-left: 9px !important;
-
 }
 
 .accounts-dashboard-wrap .toggle {
-
     width: 160px !important;
     height: auto !important;
-
 }
 
-html .o_web_client>.o_action_manager {
+html .o_web_client > .o_action_manager {
     overflow: auto !important;
 }

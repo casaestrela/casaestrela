@@ -1,54 +1,67 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<templates id="point_of_sale.template" xml:space="preserve">	
-
-	<t t-name="PaymentScreen" t-inherit="point_of_sale.PaymentScreen" t-inherit-mode="extension" owl="1">
-		<xpath expr="//div[1]/div[1]/t[1]/div[1]/div[3]" position="replace">
-			<div class="button next" t-att-class="{ highlight: currentOrder.is_paid() || currentOrder.is_to_invoice()}"
-                  t-on-click="validateOrder(false)">
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="point_of_sale.template" xml:space="preserve">
+    <t
+        t-name="PaymentScreen"
+        t-inherit="point_of_sale.PaymentScreen"
+        t-inherit-mode="extension"
+        owl="1"
+    >
+        <xpath expr="//div[1]/div[1]/t[1]/div[1]/div[3]" position="replace">
+            <div
+                class="button next"
+                t-att-class="{ highlight: currentOrder.is_paid() || currentOrder.is_to_invoice()}"
+                t-on-click="validateOrder(false)"
+            >
                 <span class="next_text">Validate</span>
-                <i class="fa fa-angle-double-right fa-fw"></i>
+                <i class="fa fa-angle-double-right fa-fw" />
             </div>
-		</xpath>
-	</t>
-	
-	<t t-name="ChequeInformation" owl="1">
+        </xpath>
+    </t>
+    <t t-name="ChequeInformation" owl="1">
         <div role="dialog" class="modal-dialog">
             <div class="popup medium-form touch-scrollable scrollable-y">
                 <div class="card">
                     <div class="card-content">
-                        <h4 class="card-title"><t t-esc="props.title || '' " /></h4>
+                        <h4 class="card-title">
+                            <t t-esc="props.title || '' " />
+                        </h4>
                         <div class="client-details-box clearfix">
-                                <div class="row">
-                                    <span class='label'>Cheque Number</span>
-                                    <input class="form-control" t-model="state.cheque_number"
-                                           name="cheque_number"
-                                           />
-                                </div>
-                                <div class="row">
-                                    <span class="label" style="font-weight:bold">Cheque Date</span>
-                                    <input class="detail client-lang needsclick" type="date"
-                                           t-ref="text_cheque_date" t-model="state.cheque_date"
-                                           placeholder="ChequeDate" id="text_cheque_date"
-                                           name="cheque_date"/>
-                                </div>
+                            <div class="row">
+                                <span class='label'>Cheque Number</span>
+                                <input
+                                    class="form-control"
+                                    t-model="state.cheque_number"
+                                    name="cheque_number"
+                                />
+                            </div>
+                            <div class="row">
+                                <span
+                                    class="label"
+                                    style="font-weight:bold"
+                                >Cheque Date</span>
+                                <input
+                                    class="detail client-lang needsclick"
+                                    type="date"
+                                    t-ref="text_cheque_date"
+                                    t-model="state.cheque_date"
+                                    placeholder="ChequeDate"
+                                    id="text_cheque_date"
+                                    name="cheque_date"
+                                />
+                            </div>
                         </div>
                     </div>
-                    
-                        <div class="form-footer">
-                        	<div class="button" t-on-click="confirm">
-		                        <i class="fa fa-floppy-o"/>
-		                        <span> Add</span>
-		                    </div>
-		                    <div class="button" t-on-click="cancel">
-		                        <span> Cancel</span>
-		                    </div>
+                    <div class="form-footer">
+                        <div class="button" t-on-click="confirm">
+                            <i class="fa fa-floppy-o" />
+                            <span> Add</span>
                         </div>
+                        <div class="button" t-on-click="cancel">
+                            <span> Cancel</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </t>
-	
 </templates>
-		
-		
-		

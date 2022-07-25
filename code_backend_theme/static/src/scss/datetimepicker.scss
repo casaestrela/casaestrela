@@ -5,27 +5,27 @@
             > tr > .prev {
                 color: #fff !important;
                 background-color: $primary_accent !important;
-                &:hover{
+                &:hover {
                     background-color: darken($primary_accent, 10%) !important;
                 }
-                > .fa{
+                > .fa {
                     color: #fff !important;
                 }
             }
             > tr > .next {
                 color: #fff !important;
                 background-color: $primary_accent !important;
-                &:hover{
+                &:hover {
                     background-color: darken($primary_accent, 10%) !important;
                 }
-                > .fa{
+                > .fa {
                     color: #fff !important;
                 }
             }
             > tr > .picker-switch {
                 color: #fff !important;
                 background-color: $primary_accent !important;
-                &:hover{
+                &:hover {
                     background-color: darken($primary_accent, 10%) !important;
                 }
             }
@@ -55,14 +55,16 @@
 }
 
 .daterangepicker .drp-calendar .calendar-table thead tr:first-child {
-    color: #FFFFFF;
+    color: #ffffff;
     background-color: $primary_accent;
 }
 
-.daterangepicker .drp-calendar .calendar-table tbody tr td:not(.off).active, .daterangepicker .drp-calendar .calendar-table tbody tr td:not(.off).active:hover {
+.daterangepicker .drp-calendar .calendar-table tbody tr td:not(.off).active,
+.daterangepicker .drp-calendar .calendar-table tbody tr td:not(.off).active:hover {
     background-color: $primary_accent;
 }
 
-.daterangepicker .drp-calendar .calendar-table thead tr:first-child th.prev:hover, .daterangepicker .drp-calendar .calendar-table thead tr:first-child th.next:hover {
+.daterangepicker .drp-calendar .calendar-table thead tr:first-child th.prev:hover,
+.daterangepicker .drp-calendar .calendar-table thead tr:first-child th.next:hover {
     background-color: darken($primary_accent, 20%);
 }

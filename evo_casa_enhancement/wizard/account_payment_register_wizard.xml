@@ -1,18 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-	<record id="view_account_payment_register_form_inherit_casa" model="ir.ui.view">
+    <record id="view_account_payment_register_form_inherit_casa" model="ir.ui.view">
         <field name="name">account.payment.register.form.view.inherit.casa</field>
         <field name="model">account.payment.register</field>
-        <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+        <field name="inherit_id" ref="account.view_account_payment_register_form" />
         <field name="arch" type="xml">
-        	<xpath expr="//form/group/group[@name='group1']/field[@name='group_payment']" position="after">
-        		<field name="is_cheque" invisible='1'/>
-        		<field name="cheque_number" attrs="{'invisible': [('is_cheque', '=', False)],'required':[('is_cheque','=',True)]}"/>	
-				<field name="cheque_date" attrs="{'invisible': [('is_cheque', '=', False)],'required':[('is_cheque','=',True)]}"/>
-        	</xpath>
-		</field>
-	</record>
-	
-	
-	
+            <xpath
+                expr="//form/group/group[@name='group1']/field[@name='group_payment']"
+                position="after"
+            >
+                <field name="is_cheque" invisible='1' />
+                <field
+                    name="cheque_number"
+                    attrs="{'invisible': [('is_cheque', '=', False)],'required':[('is_cheque','=',True)]}"
+                />
+                <field
+                    name="cheque_date"
+                    attrs="{'invisible': [('is_cheque', '=', False)],'required':[('is_cheque','=',True)]}"
+                />
+            </xpath>
+        </field>
+    </record>
 </odoo>

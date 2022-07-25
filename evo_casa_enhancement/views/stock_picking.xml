@@ -1,72 +1,92 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-	<record id="view_picking_form_inherit_casa" model="ir.ui.view">
+    <record id="view_picking_form_inherit_casa" model="ir.ui.view">
         <field name="name">stock.picking.form.inherit.casa</field>
         <field name="model">stock.picking</field>
-        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="inherit_id" ref="stock.view_picking_form" />
         <field name="arch" type="xml">
-        	<xpath expr="//button[@name='action_cancel']" position="after">
-        		<field name='verify_user' invisible='1'/>
-        		<field name='current_user_id' invisible='1'/>
-        		<field name='verify_bool' invisible='1'/>
-        		<button name="action_verify" string="Verified" type="object" class='oe_highlight' attrs="{'invisible': ['|','|',('picking_type_code', '!=', 'internal'),('state','!=','assigned'),('verify_bool', '=', False)]}" />
-        		<button name="button_validate" attrs="{'invisible': ['|',('state', '!=','verified' ),('verify_bool', '!=', False)]}" string="Validate" type="object" class="oe_highlight" groups="stock.group_stock_user"/>
-        		
-        	</xpath>
-        	<xpath expr="//sheet/notebook/page[@name='operations']/field[@name='move_ids_without_package']/tree/field[@name='product_uom_qty']" position="after">
-        		<field name="stock_location_qty" invisible="0"/>
-        		<field name="price_unit" invisible="1"/>
-        	</xpath>
-        	<!-- <xpath expr="//button[@name='button_validate']" position="replace">
+            <xpath expr="//button[@name='action_cancel']" position="after">
+                <field name='verify_user' invisible='1' />
+                <field name='current_user_id' invisible='1' />
+                <field name='verify_bool' invisible='1' />
+                <button
+                    name="action_verify"
+                    string="Verified"
+                    type="object"
+                    class='oe_highlight'
+                    attrs="{'invisible': ['|','|',('picking_type_code', '!=', 'internal'),('state','!=','assigned'),('verify_bool', '=', False)]}"
+                />
+                <button
+                    name="button_validate"
+                    attrs="{'invisible': ['|',('state', '!=','verified' ),('verify_bool', '!=', False)]}"
+                    string="Validate"
+                    type="object"
+                    class="oe_highlight"
+                    groups="stock.group_stock_user"
+                />
+            </xpath>
+            <xpath
+                expr="//sheet/notebook/page[@name='operations']/field[@name='move_ids_without_package']/tree/field[@name='product_uom_qty']"
+                position="after"
+            >
+                <field name="stock_location_qty" invisible="0" />
+                <field name="price_unit" invisible="1" />
+            </xpath>
+            <!-- <xpath expr="//button[@name='button_validate']" position="replace">
         		<button name="button_validate" attrs="{'invisible': ['|','|', ('state', 'in', ('waiting','confirmed')), ('picking_type_code', '=', 'internal'),('show_validate', '=', False)]}" string="Validate" type="object" class="oe_highlight" groups="stock.group_stock_user"/>
         	</xpath>-->
-        	<!-- , ('location_dest_id.operating_unit_id', 'in', allow_operating_unit_ids) -->
-		</field>
-	</record>
-	
-	<record id="stock.action_report_delivery" model="ir.actions.report">
-            <field name="name">Guia De Remessa</field>
-            <field name="model">stock.picking</field>
-            <field name="report_type">qweb-pdf</field>
-            <field name="report_name">stock.report_deliveryslip</field>
-            <field name="report_file">stock.report_deliveryslip</field>
-            <field name="print_report_name">'Guia De Remessa - %s - %s' % (object.partner_id.name or '', object.name)</field>
-            <field name="binding_model_id" ref="stock.model_stock_picking"/>
-            <field name="binding_type">report</field>
-        </record>
-        
-        <record id="action_report_delivery_with_price" model="ir.actions.report">
-            <field name="name">Guia De Remessa With Price</field>
-            <field name="model">stock.picking</field>
-            <field name="report_type">qweb-pdf</field>
-            <field name="report_name">evo_casa_enhancement.report_deliveryslip_with_price</field>
-            <field name="report_file">evo_casa_enhancement.report_deliveryslip_with_price</field>
-            <field name="print_report_name">'Guia De Remessa With Price - %s - %s' % (object.partner_id.name or '', object.name)</field>
-            <field name="binding_model_id" ref="stock.model_stock_picking"/>
-            <field name="binding_type">report</field>
-        </record>
-        
-        
-        <record model="ir.ui.view" id="stock.product_template_kanban_stock_view">
-            <field name="name">Product Template Kanban Stock</field>
-            <field name="model">product.template</field>
-            <field name="inherit_id" ref="product.product_template_kanban_view"/>
-            <field name="arch" type="xml">
-                <xpath expr="//kanban" position="inside">
-                    <field name="type"/>
-                </xpath>
-                <xpath expr="//div[@name='product_lst_price']" position="after">
-                    <div t-if="record.type.raw_value == 'product'">Total Stock: <field name="qty_available"/> <field name="uom_id"/></div>
-                </xpath>
-            </field>
-        </record>
-        
-        <menuitem 
-        	id="stock.all_picking" 
-        	name="Stock Transfers" 
-        	parent="stock.menu_stock_warehouse_mgmt" 
-        	sequence="5" 
-        	action="stock.action_picking_tree_all" 
-        	groups="stock.group_stock_manager,stock.group_stock_user"/>
-       
+            <!-- , ('location_dest_id.operating_unit_id', 'in', allow_operating_unit_ids) -->
+        </field>
+    </record>
+    <record id="stock.action_report_delivery" model="ir.actions.report">
+        <field name="name">Guia De Remessa</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">stock.report_deliveryslip</field>
+        <field name="report_file">stock.report_deliveryslip</field>
+        <field
+            name="print_report_name"
+        >'Guia De Remessa - %s - %s' % (object.partner_id.name or '', object.name)</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking" />
+        <field name="binding_type">report</field>
+    </record>
+    <record id="action_report_delivery_with_price" model="ir.actions.report">
+        <field name="name">Guia De Remessa With Price</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field
+            name="report_name"
+        >evo_casa_enhancement.report_deliveryslip_with_price</field>
+        <field
+            name="report_file"
+        >evo_casa_enhancement.report_deliveryslip_with_price</field>
+        <field
+            name="print_report_name"
+        >'Guia De Remessa With Price - %s - %s' % (object.partner_id.name or '', object.name)</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking" />
+        <field name="binding_type">report</field>
+    </record>
+    <record model="ir.ui.view" id="stock.product_template_kanban_stock_view">
+        <field name="name">Product Template Kanban Stock</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_kanban_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="inside">
+                <field name="type" />
+            </xpath>
+            <xpath expr="//div[@name='product_lst_price']" position="after">
+                <div t-if="record.type.raw_value == 'product'">Total Stock: <field
+                        name="qty_available"
+                    /> <field name="uom_id" /></div>
+            </xpath>
+        </field>
+    </record>
+    <menuitem
+        id="stock.all_picking"
+        name="Stock Transfers"
+        parent="stock.menu_stock_warehouse_mgmt"
+        sequence="5"
+        action="stock.action_picking_tree_all"
+        groups="stock.group_stock_manager,stock.group_stock_user"
+    />
 </odoo>

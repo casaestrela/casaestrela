@@ -1,16 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <templates id="template" xml:space="preserve">
-
     <t t-name="MSPAllow" owl="1">
-       <t t-if="get_highlight == true">
-       		<span class="control-button highlight" >
-       			<span>Disallow MSP</span>
-       		</span>
-       </t>
-       <t t-else="">
-       		<span class="control-button" >
-       			<span>Click For MSP</span>
-       		</span>
-       </t>
-   </t>
-  </templates>
+        <t t-if="get_highlight == true">
+            <span class="control-button highlight">
+                <span>Disallow MSP</span>
+            </span>
+        </t>
+        <t t-else="">
+            <span class="control-button">
+                <span>Click For MSP</span>
+            </span>
+        </t>
+    </t>
+</templates>

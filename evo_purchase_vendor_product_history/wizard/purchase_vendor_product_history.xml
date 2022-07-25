@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <data>
         <record id="action_product_purchse_history_view" model="ir.ui.view">
@@ -7,34 +7,41 @@
             <field name="arch" type="xml">
                 <form string="Product Purchase History">
                     <div>
-                        <field name="product_id" readonly="1"/>
-                        <field name="product_purchase_history" mode="tree" nolabel="1" readonly="1">
+                        <field name="product_id" readonly="1" />
+                        <field
+                            name="product_purchase_history"
+                            mode="tree"
+                            nolabel="1"
+                            readonly="1"
+                        >
                             <tree string="Price History Table">
-                                <field name="order_line_id" invisible="1"/>
-                                <field name="vendor_id"/>
-                                <field name="purchase_order_id"/>                                
-                                <field name="order_date"/>
-                                <field name="history_price"/>
-                                <field name="history_qty"/>
-                                <field name="history_total"/>
+                                <field name="order_line_id" invisible="1" />
+                                <field name="vendor_id" />
+                                <field name="purchase_order_id" />
+                                <field name="order_date" />
+                                <field name="history_price" />
+                                <field name="history_qty" />
+                                <field name="history_total" />
                             </tree>
                         </field>
                     </div>
                     <footer>
-                        <button string="Cancel" class="btn btn-default" special="cancel"/>
+                        <button
+                            string="Cancel"
+                            class="btn btn-default"
+                            special="cancel"
+                        />
                     </footer>
                 </form>
             </field>
         </record>
-
         <record id="action_product_purchase_history" model="ir.actions.act_window">
             <field name="name">Product Purchase history</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">product.purchase.order.history</field>
-            <field name="view_id" ref="action_product_purchse_history_view"/>
+            <field name="view_id" ref="action_product_purchse_history_view" />
             <field name="view_mode">tree</field>
             <field name="target">new</field>
         </record>
-
     </data>
 </odoo>

@@ -2,8 +2,8 @@
     "name": "Sale with Multiple Operating Unit",
     "summary": "Allow a unit to request internal quotes to another",
     "version": "14.0.1.0.0",
-    'author': "Evozard",
-    'website': "http://www.evozard.com",
+    "author": "Evozard",
+    "website": "http://www.evozard.com",
     "category": "Sales Management",
     "depends": [
         "crm",

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #############################################################################
 #
 #    Cybrosys Technologies Pvt. Ltd.
@@ -20,29 +19,30 @@
 #
 #############################################################################
 
-from odoo import models, fields, api
+from odoo import api, fields, models
 
 
 class ProductSaleHistoryWizard(models.TransientModel):
-    _name = 'product.sale.order.history'
-    _rec_name = 'product_id'
+    _name = "product.sale.order.history"
+    _rec_name = "product_id"
 
-    product_sale_history = fields.One2many('product.sale.history.line',
-                                           'order_line_id',
-                                           string='Product Sale Price History',
-                                           help="shows the product sale history of the customer")
-    product_id = fields.Many2one('product.product', string="Product:")
+    product_sale_history = fields.One2many(
+        "product.sale.history.line",
+        "order_line_id",
+        string="Product Sale Price History",
+        help="shows the product sale history of the customer",
+    )
+    product_id = fields.Many2one("product.product", string="Product:")
 
 
 class SalesPriceHistory(models.TransientModel):
-    _name = 'product.sale.history.line'
-    _rec_name = 'sale_order_id'
+    _name = "product.sale.history.line"
+    _rec_name = "sale_order_id"
 
-    order_line_id = fields.Many2one('product.sale.order.history')
-    customer_id = fields.Many2one('res.partner',string='Customer')    
-    order_date = fields.Date('Date')
-    sale_order_id = fields.Many2one('sale.order', string="Order")
-    history_price = fields.Char(string='Unit Price')
-    history_qty = fields.Float(string='Quantity')
-    history_total = fields.Float(string='Total')
-
+    order_line_id = fields.Many2one("product.sale.order.history")
+    customer_id = fields.Many2one("res.partner", string="Customer")
+    order_date = fields.Date("Date")
+    sale_order_id = fields.Many2one("sale.order", string="Order")
+    history_price = fields.Char(string="Unit Price")
+    history_qty = fields.Float(string="Quantity")
+    history_total = fields.Float(string="Total")

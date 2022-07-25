@@ -29,9 +29,7 @@ class AccountPaymentRegister(models.TransientModel):
                     lambda l: l.account_id == destination_account
                 )
                 line.write(
-                    {
-                        "operating_unit_id": reconciled_moves.operating_unit_id.id,
-                    }
+                    {"operating_unit_id": reconciled_moves.operating_unit_id.id,}
                 )
                 payment.action_post()
                 to_reconcile.reconcile()

@@ -6,4 +6,3 @@ access_product_pricelist_log,product.pricelist.process.log,model_pricelist_proce
 access_product_pricelist_detail_log,product.pricelist.process.detail.log,model_pricelist_process_detail_log,,1,1,1,1
 access_update_product_pricelist,access_update_product_pricelist,model_update_product_pricelist,,1,1,1,1
 access_negative_balance_wizard,access_negative_balance_wizard,model_negative_balance_wizard,,1,1,1,1
-

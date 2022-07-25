@@ -1,47 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <data>
-    	<record id="product_pricelist_form_view_inherit" model="ir.ui.view">
-			<field name="name">product.pricelist.form.inherit</field>
-			<field name="model">product.pricelist</field>
-			<field name="inherit_id" ref="product.product_pricelist_view"/>
-			<field name="arch" type="xml">
-				<xpath expr="//notebook" position="inside">
-					<page name="pricelist_process_log" string="Pricelist Process Log" groups="sales_team.group_sale_manager">
-						<field name="pricelist_processed_log_ids" readonly="1" nolabel="1">
-							<tree string="Pricelist Process Log">
-							  <field name='process_date'/>
-							  <field name='total_records'/>	                                      
-							  <field name='total_processed_record'/>
-							  <field name='total_unprocessed_record'/>           
-							</tree>
-							<form string="Pricelist Update Log Details">
-								<group>
-									<group>
-									<field name='process_date'/>
-									<field name='total_records'/>
-									</group>
-									<group>                                      
-									<field name='total_processed_record'/>
-									<field name='total_unprocessed_record'/>
-									</group>									
-								</group>
-								<group string="Error Details">
-									<field name="processed_log_details_ids" nolabel="1" readonly="1">
-										<tree string="Error Details">
-										  <field name='file_row_number'/>
-										  <field name='file_product_default_code'/>	                                      
-										  <field name='file_process_error'/>           
-										</tree>										 
-									</field> 
-								</group>
-							</form>
-						</field>
-					</page>
-				</xpath> 	
-			</field>
-		</record>
-	</data>
+        <record id="product_pricelist_form_view_inherit" model="ir.ui.view">
+            <field name="name">product.pricelist.form.inherit</field>
+            <field name="model">product.pricelist</field>
+            <field name="inherit_id" ref="product.product_pricelist_view" />
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page
+                        name="pricelist_process_log"
+                        string="Pricelist Process Log"
+                        groups="sales_team.group_sale_manager"
+                    >
+                        <field
+                            name="pricelist_processed_log_ids"
+                            readonly="1"
+                            nolabel="1"
+                        >
+                            <tree string="Pricelist Process Log">
+                                <field name='process_date' />
+                                <field name='total_records' />
+                                <field name='total_processed_record' />
+                                <field name='total_unprocessed_record' />
+                            </tree>
+                            <form string="Pricelist Update Log Details">
+                                <group>
+                                    <group>
+                                        <field name='process_date' />
+                                        <field name='total_records' />
+                                    </group>
+                                    <group>
+                                        <field name='total_processed_record' />
+                                        <field name='total_unprocessed_record' />
+                                    </group>
+                                </group>
+                                <group string="Error Details">
+                                    <field
+                                        name="processed_log_details_ids"
+                                        nolabel="1"
+                                        readonly="1"
+                                    >
+                                        <tree string="Error Details">
+                                            <field name='file_row_number' />
+                                            <field name='file_product_default_code' />
+                                            <field name='file_process_error' />
+                                        </tree>
+                                    </field>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
 </odoo>
-
-
